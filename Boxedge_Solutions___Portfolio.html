@@ -1,0 +1,3310 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Boxedge Solutions | Portfolio</title>
+  <link rel="icon" href="favicon.webp" type="image/webp">
+  <meta name="theme-color" content="#0b0b0a">
+  <meta name="description" content="Films, AI, design & campaigns from Boxedge Solutions.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+  /* ========== Theme tokens & base ========== */
+
+  :root {
+    --bg: #f7f7f5;
+    --ink: #121212;
+    --mut: #747474;
+    --line: #e5e5e1;
+    --ac: #02FEBB;
+    --g: 24px;
+    --lf: brightness(0);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px)
+  }
+
+  @media(prefers-color-scheme:dark) {
+    :root:not([data-theme=light]) {
+      --bg: #121212;
+      --ink: #f3f3ef;
+      --mut: #9a9a94;
+      --line: #2a2a28;
+      --lf: none
+    }
+  }
+
+  :root[data-theme=dark] {
+    --bg: #121212;
+    --ink: #f3f3ef;
+    --mut: #9a9a94;
+    --line: #2a2a28;
+    --lf: none
+  }
+
+  * {
+    box-sizing: border-box
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: env(safe-area-inset-top, 0px)
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16px/1.5 'DM Sans', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    cursor: pointer
+  }
+
+  .sh {
+    width: min(1500px, calc(100% - 2*var(--g) - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+    margin-inline: auto
+  }
+
+  /* ========== Header & navigation ========== */
+
+  header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    color: #fff;
+    transition: .3s;
+    padding-top: env(safe-area-inset-top, 0px)
+  }
+
+  header.on {
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px);
+    color: var(--ink);
+    border-bottom: 1px solid var(--line)
+  }
+
+  .nav {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    flex: none
+  }
+
+  .logo img {
+    display: block;
+    height: 44px;
+    width: auto;
+    transition: filter .3s
+  }
+
+  header.on .logo img {
+    filter: var(--lf)
+  }
+
+  header.mo .logo img {
+    filter: none
+  }
+
+  .mb {
+    display: none;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    border: 0;
+    background: none;
+    color: inherit
+  }
+
+  .mb span {
+    position: absolute;
+    left: 11px;
+    right: 11px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform .3s, top .3s
+  }
+
+  .mb span:nth-child(1) {
+    top: 18px
+  }
+
+  .mb span:nth-child(2) {
+    top: 25px
+  }
+
+  header.mo .mb span:nth-child(1) {
+    top: 21px;
+    transform: rotate(45deg)
+  }
+
+  header.mo .mb span:nth-child(2) {
+    top: 21px;
+    transform: rotate(-45deg)
+  }
+
+  .nl {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    font: 700 12px 'Space Grotesk';
+    letter-spacing: .08em;
+    text-transform: uppercase
+  }
+
+  .nl a {
+    display: inline-block;
+    white-space: pre
+  }
+
+  .cta {
+    padding: 12px 18px;
+    background: var(--ac);
+    color: #111;
+    border-radius: 3px;
+    font: 700 12px 'Space Grotesk';
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    display: inline-block;
+    border: 0;
+    transition: transform .2s
+  }
+
+  .cta:hover {
+    transform: translateY(-2px)
+  }
+
+  /* ========== Hero ========== */
+
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    align-items: end;
+    color: #fff;
+    background: #0b0b0a;
+    overflow: hidden;
+    padding: 110px 0 48px
+  }
+
+  .hero video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none
+  }
+
+  .orb {
+    position: absolute;
+    width: 46vmax;
+    height: 46vmax;
+    border-radius: 50%;
+    filter: blur(70px);
+    animation: fl 14s ease-in-out infinite alternate
+  }
+
+  .o1 {
+    background: #02FEBB;
+    left: -10vmax;
+    top: -14vmax;
+    opacity: .26
+  }
+
+  .o2 {
+    background: #2f6bff;
+    right: -12vmax;
+    bottom: -18vmax;
+    opacity: .3;
+    animation-delay: -6s
+  }
+
+  @keyframes fl {
+    to {
+      transform: translate(8vmax, 6vmax) scale(1.2)
+    }
+  }
+
+  .hero:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, .35), rgba(0, 0, 0, .78))
+  }
+
+  .hc {
+    position: relative;
+    z-index: 2
+  }
+
+  .ey {
+    font: 700 12px 'Space Grotesk';
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ac)
+  }
+
+  .hero h1 {
+    font: 600 clamp(44px, 9vw, 136px)/.92 'Space Grotesk';
+    letter-spacing: -.07em;
+    margin: 16px 0 26px;
+    max-width: 13ch
+  }
+
+  .hr {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+    flex-wrap: wrap
+  }
+
+  .hr p {
+    max-width: 380px;
+    margin: 0;
+    color: #d4d4cf
+  }
+
+  .hb {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap
+  }
+
+  .gh {
+    padding: 12px 18px;
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: 3px;
+    font: 700 12px 'Space Grotesk';
+    letter-spacing: .06em;
+    text-transform: uppercase
+  }
+
+  .gh:hover {
+    background: #fff;
+    color: #111
+  }
+
+  /* ========== Marquee ========== */
+
+  .mq {
+    background: var(--ac);
+    color: #111;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 14px 0;
+    font: 700 14px 'Space Grotesk';
+    letter-spacing: .12em;
+    text-transform: uppercase
+  }
+
+  .mq div {
+    display: inline-block;
+    animation: mq 28s linear infinite
+  }
+
+  @keyframes mq {
+    to {
+      transform: translateX(-50%)
+    }
+  }
+
+  /* ========== Selected work: heading, tabs, grid, cards ========== */
+
+  .wk {
+    padding: 84px 0 30px
+  }
+
+  .wk h2 {
+    font: 600 clamp(42px, 7vw, 96px)/.92 'Space Grotesk';
+    letter-spacing: -.075em;
+    margin: 0
+  }
+
+  .wk h2 span {
+    color: #009e75
+  }
+
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-block: 1px solid var(--line);
+    padding: 14px 0;
+    margin: 32px 0 24px
+  }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap
+  }
+
+  .tab {
+    border: 0;
+    background: none;
+    padding: 10px 14px;
+    border-radius: 3px;
+    font: 700 12px 'Space Grotesk';
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--mut);
+    white-space: pre;
+    transition: background .2s
+  }
+
+  .tab:hover {
+    color: var(--ink)
+  }
+
+  .tab.a {
+    background: var(--ink);
+    color: var(--bg)
+  }
+
+  .ct {
+    font-size: 11px;
+    color: var(--mut)
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px
+  }
+
+  .card {
+    cursor: pointer;
+    animation: up .22s ease-out both;
+    outline-offset: 4px
+  }
+
+  @keyframes up {
+    from {
+      opacity: 0;
+      transform: translateY(22px)
+    }
+  }
+
+  .th {
+    position: relative;
+    aspect-ratio: 4/4.8;
+    border-radius: 4px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform .25s ease-out;
+    overflow: hidden
+  }
+
+  .th b {
+    position: absolute;
+    left: 12px;
+    bottom: -14px;
+    font: 700 clamp(110px, 11vw, 170px)/1 'Space Grotesk';
+    color: rgba(255, 255, 255, .16);
+    letter-spacing: -.08em;
+    transition: transform .5s
+  }
+
+  .card:hover .th b {
+    transform: translateY(-14px) scale(1.06)
+  }
+
+  .chip,
+  .cl {
+    position: absolute;
+    top: 12px;
+    padding: 6px 8px;
+    border-radius: 2px;
+    font: 800 9px/1 'DM Sans';
+    letter-spacing: .09em;
+    text-transform: uppercase
+  }
+
+  .chip {
+    left: 12px;
+    background: rgba(247, 247, 245, .94);
+    color: #111
+  }
+
+  .cl {
+    right: 12px;
+    background: var(--ac);
+    color: #111
+  }
+
+  .pl {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 54px;
+    height: 54px;
+    margin: -27px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    opacity: 0;
+    transform: scale(.8);
+    transition: .25s;
+    background: rgba(0, 0, 0, .15)
+  }
+
+  .card:hover .pl,
+  .card:focus-visible .pl {
+    opacity: 1;
+    transform: none
+  }
+
+  .cap {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 1px
+  }
+
+  .cap h3 {
+    margin: 0;
+    font: 600 15px 'Space Grotesk';
+    letter-spacing: -.02em
+  }
+
+  .cap p {
+    margin: 3px 0 0;
+    font-size: 11px;
+    color: var(--mut)
+  }
+
+  .cap span {
+    color: var(--mut);
+    transition: .2s
+  }
+
+  .card:hover .cap span {
+    transform: translate(3px, -3px);
+    color: var(--ink)
+  }
+
+  /* ========== Closing CTA & footer ========== */
+
+  .end {
+    background: #121212;
+    color: #fff;
+    padding: 56px 0;
+    margin-top: 50px
+  }
+
+  .end .sh {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap
+  }
+
+  .end h2 {
+    font: 600 clamp(30px, 5vw, 60px)/1 'Space Grotesk';
+    letter-spacing: -.06em;
+    margin: 0
+  }
+
+  .end h2 span {
+    color: var(--ac)
+  }
+
+  footer {
+    padding: 18px 0;
+    background: var(--ac);
+    color: #000;
+    font-size: 11px
+  }
+
+  footer .sh {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 12px
+  }
+
+  /* ========== Project popup: vertical feed (Instagram Shorts style) ========== */
+
+  .md {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    background: #000
+  }
+
+  .md.o {
+    display: block;
+    animation: fi .25s
+  }
+
+  @keyframes fi {
+    from {
+      opacity: 0
+    }
+  }
+
+  .fd {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    outline: 0
+  }
+
+  .fd::-webkit-scrollbar {
+    display: none
+  }
+
+  .fs {
+    position: relative;
+    height: 100%;
+    background: #0a0a0a;
+    container-type: size;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: grid;
+    place-items: center;
+    overflow: hidden
+  }
+
+  /* centred 9:16 frame: fits inside any screen, never stretches edge to edge */
+  .fr {
+    position: relative;
+    width: min(100cqw, calc(100cqh * 9 / 16));
+    aspect-ratio: 9 / 16;
+    background: #000;
+    overflow: hidden
+  }
+
+  @media(min-width:761px) {
+    .fr {
+      width: min(100cqw, calc((100cqh - 40px) * 9 / 16));
+      border-radius: 16px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, .6)
+    }
+  }
+
+  .fs video,
+  .fs img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+    display: block
+  }
+
+  .fs .fb {
+    position: absolute;
+    inset: 0
+  }
+
+  .fs .pi {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 72px;
+    height: 72px;
+    margin: -36px 0 0 -36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    display: none;
+    place-items: center;
+    pointer-events: none
+  }
+
+  .fs.ps .pi {
+    display: grid
+  }
+
+  .fs .pi svg {
+    width: 32px;
+    height: 32px
+  }
+
+  .fc {
+    position: absolute;
+    z-index: 5;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    color: #111;
+    display: grid;
+    place-items: center;
+    cursor: pointer
+  }
+
+  .fc svg {
+    width: 20px;
+    height: 20px
+  }
+
+  .fc:hover {
+    background: #fff
+  }
+
+  #mx {
+    right: 14px;
+    top: 14px;
+    top: max(14px, env(safe-area-inset-top));
+    font-size: 24px;
+    line-height: 1
+  }
+
+  #snd {
+    left: 14px;
+    top: 14px;
+    top: max(14px, env(safe-area-inset-top))
+  }
+
+  #snd[hidden] {
+    display: none
+  }
+
+  /* prev / next: sit just beside the frame, always inside the screen */
+  .fn {
+    position: absolute;
+    top: 50%;
+    left: min(calc(50% + min(50vw, (100vh - 40px) * 9 / 32) + 16px), calc(100% - 58px));
+    left: min(calc(50% + min(50vw, (100dvh - 40px) * 9 / 32) + 16px), calc(100% - 58px));
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transform: translateY(-50%)
+  }
+
+  .fn .fc {
+    position: static
+  }
+
+  /* phones / touch screens: swipe only, no buttons */
+  @media(max-width:760px),
+  (hover:none) and (pointer:coarse) {
+    .fn {
+      display: none
+    }
+  }
+
+  .x {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    z-index: 5;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    color: #111;
+    font-size: 22px
+  }
+
+  /* ========== Case study overlay ========== */
+
+  #cs {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: #f7f3e8;
+    overflow-y: auto;
+    display: none;
+    color: #1a1a16
+  }
+
+  #cs.o {
+    display: block;
+    animation: fi .35s
+  }
+
+  #pg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #02FEBB;
+    width: 0;
+    z-index: 210
+  }
+
+  #cs .x {
+    position: fixed;
+    background: #02FEBB;
+    z-index: 210;
+    right: calc(var(--sb, 0px) + 24px + env(safe-area-inset-right, 0px));
+    top: calc(22px + env(safe-area-inset-top, 0px));
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .25)
+  }
+
+  .sec {
+    padding: clamp(56px, 8vw, 100px) clamp(20px, 6vw, 90px)
+  }
+
+  .dk {
+    background: #02241c;
+    color: #f4f1e6
+  }
+
+  .cr {
+    background: #f7f3e8
+  }
+
+  .cw {
+    background: #fffcf5
+  }
+
+  .lb {
+    font: 800 11px 'DM Sans';
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #c0714f;
+    margin-bottom: 14px
+  }
+
+  .dk .lb {
+    color: #02FEBB
+  }
+
+  .sf {
+    font: 700 clamp(30px, 5vw, 60px)/1.06 Georgia, 'DejaVu Serif', serif;
+    color: #01392b;
+    margin: 0 0 18px;
+    max-width: 19ch
+  }
+
+  .dk .sf {
+    color: #f4f1e6
+  }
+
+  .lead {
+    max-width: 64ch;
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: #44443c
+  }
+
+  .dk .lead {
+    color: #c6d7d3
+  }
+
+  .g {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 34px
+  }
+
+  .cd {
+    border: 1px solid #ddd8c8;
+    border-radius: 18px;
+    padding: 22px;
+    background: #fffcf5
+  }
+
+  .cd h4 {
+    margin: 0 0 8px;
+    font: 700 18px 'DM Sans';
+    color: #01392b
+  }
+
+  .cd p {
+    margin: 0;
+    font-size: 14px;
+    color: #55554b
+  }
+
+  .cd em {
+    font: 700 12px 'DM Sans';
+    color: #c0714f;
+    font-style: normal
+  }
+
+  .dk .cd {
+    background: #06392d;
+    border-color: #105b48
+  }
+
+  .dk .cd h4 {
+    color: #fff
+  }
+
+  .dk .cd p {
+    color: #b7d1cb
+  }
+
+  .dk .cd em {
+    color: #02FEBB
+  }
+
+  .big {
+    font: 700 clamp(54px, 11vw, 150px)/1 Georgia, serif;
+    color: #02FEBB
+  }
+
+  .pill {
+    display: inline-block;
+    background: #02FEBB;
+    color: #02241c;
+    font: 800 12px 'DM Sans';
+    letter-spacing: .06em;
+    padding: 16px 34px;
+    border-radius: 30px;
+    text-transform: uppercase
+  }
+
+  .cv {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: #02241c
+  }
+
+  .cv>div:first-child {
+    padding: clamp(70px, 9vw, 110px) clamp(20px, 6vw, 90px) 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    color: #f4f1e6
+  }
+
+  .cv .im {
+    background: radial-gradient(circle at 35% 22%, #ffd27c 0 3%, transparent 4%), radial-gradient(circle at 70% 14%, #ffd27c 0 2.5%, transparent 3.5%), radial-gradient(circle at 60% 60%, #7a4a22, transparent 60%), linear-gradient(160deg, #5a3418, #140d07)
+  }
+
+  .lg {
+    width: 120px;
+    aspect-ratio: 1;
+    background: none;
+    display: grid;
+    place-items: center;
+    overflow: hidden
+  }
+
+  .lg img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block
+  }
+
+  .lg span {
+    width: 76%;
+    aspect-ratio: 1;
+    border: 1px solid #02FEBB;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: italic 700 52px Georgia, serif;
+    color: #02FEBB
+  }
+
+  .st {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 30px
+  }
+
+  .st div {
+    background: #fffcf5;
+    border: 1px solid #ddd8c8;
+    border-radius: 18px;
+    padding: 20px
+  }
+
+  .st b {
+    display: block;
+    font: 700 clamp(32px, 4.5vw, 54px) Georgia, serif;
+    color: #01392b
+  }
+
+  .st small {
+    font-size: 12px;
+    color: #66665c
+  }
+
+  .dk .st div {
+    background: #06392d;
+    border-color: #105b48
+  }
+
+  .dk .st b {
+    color: #f4f1e6
+  }
+
+  .dk .st small {
+    color: #b7d1cb
+  }
+
+  .sw {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px
+  }
+
+  .sw div {
+    flex: 1;
+    min-width: 110px;
+    font-size: 12px
+  }
+
+  .sw i {
+    display: block;
+    height: 60px;
+    border-radius: 12px;
+    border: 1px solid #ddd8c8;
+    margin-bottom: 6px
+  }
+
+  .tl {
+    aspect-ratio: 4/3;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    font: italic 700 64px Georgia, serif
+  }
+
+  .tg {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 32px
+  }
+
+  .tg small {
+    display: block;
+    font: 800 11px 'DM Sans';
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #01392b;
+    margin-top: 8px
+  }
+
+  .rw {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 70px 60px 80px 60px;
+    gap: 10px;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #ddd8c8;
+    font-size: 14px;
+    min-width: 560px
+  }
+
+  .rw.h {
+    background: #01392b;
+    color: #fff;
+    font: 800 11px 'DM Sans';
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    border-radius: 12px 12px 0 0
+  }
+
+  .bt {
+    height: 5px;
+    background: #e6e1d0;
+    border-radius: 9px;
+    margin-top: 6px
+  }
+
+  .bt i,
+  .pb2 i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #c0714f;
+    border-radius: 9px;
+    transition: width 1.4s cubic-bezier(.2, .7, .2, 1)
+  }
+
+  .pf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 34px
+  }
+
+  .dk .bt {
+    background: #105b48
+  }
+
+  .pb2 {
+    height: 10px;
+    background: #105b48;
+    border-radius: 9px;
+    margin: 14px 0 8px
+  }
+
+  .pb2 i {
+    background: #02FEBB
+  }
+
+  .pf b {
+    font: 700 40px Georgia, serif;
+    color: #fff
+  }
+
+  .bw {
+    border: 1px solid #ddd8c8;
+    border-radius: 18px;
+    padding: 12px 12px 26px;
+    background: #f4f1e6;
+    margin-top: 30px
+  }
+
+  .bw>i {
+    display: block;
+    font: 11px 'DM Sans';
+    font-style: normal;
+    background: #fff;
+    border-radius: 20px;
+    padding: 5px 14px;
+    color: #666;
+    margin-bottom: 22px
+  }
+
+  .bw .in2 {
+    padding: 0 clamp(10px, 4vw, 48px);
+    font-family: Georgia, serif;
+    color: #01392b
+  }
+
+  .bw h5 {
+    font: 400 clamp(26px, 4vw, 46px)/1.1 Georgia, serif;
+    margin: 0
+  }
+
+  .bw h5 b {
+    display: block
+  }
+
+  .note {
+    font-size: 12px;
+    color: #7b7b70;
+    margin-top: 22px;
+    max-width: 80ch
+  }
+
+  .dk .note {
+    color: #92aaa4
+  }
+
+  /* ========== Deck of Brews case study: dark brown theme (matches the DOB deck) ========== */
+  #cs.dob {
+    --d-bg: #19151e;
+    --d-bg2: #1f1a26;
+    --d-bg3: #14111a;
+    --d-card: #241f2b;
+    --d-line: #3a3340;
+    --d-text: #f4f1e6;
+    --d-mut: #aaa2b6;
+    background: var(--d-bg);
+    color: var(--d-text)
+  }
+
+  #cs.dob .cv,
+  #cs.dob .sec.cr {
+    background: var(--d-bg)
+  }
+
+  #cs.dob .sec.cw {
+    background: var(--d-bg2)
+  }
+
+  #cs.dob .sec.dk {
+    background: var(--d-bg3)
+  }
+
+  #cs.dob .lb,
+  #cs.dob .cd em,
+  #cs.dob .big {
+    color: #02FEBB
+  }
+
+  #cs.dob .sf,
+  #cs.dob .cd h4,
+  #cs.dob .st b,
+  #cs.dob .pf b {
+    color: #fff
+  }
+
+  #cs.dob .lead,
+  #cs.dob .cd p,
+  #cs.dob .st small {
+    color: var(--d-mut)
+  }
+
+  #cs.dob .cd,
+  #cs.dob .st div {
+    background: var(--d-card);
+    border-color: var(--d-line)
+  }
+
+  #cs.dob .note,
+  #cs.dob .fg figcaption,
+  #cs.dob .rw>span:before {
+    color: #8f879b
+  }
+
+  #cs.dob .fg img {
+    background: var(--d-card);
+    border-color: var(--d-line)
+  }
+
+  #cs.dob .rw {
+    border-bottom-color: var(--d-line)
+  }
+
+  #cs.dob .rw.h {
+    background: var(--d-card);
+    color: #02FEBB
+  }
+
+  #cs.dob .bt {
+    background: var(--d-line)
+  }
+
+  #cs.dob .bt i {
+    background: #02FEBB
+  }
+
+  #cs.dob .cd.hl {
+    background: #2b2230
+  }
+
+  /* ========== Scroll reveal ========== */
+
+  .rv {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .8s, transform .8s
+  }
+
+  .rv.in {
+    opacity: 1;
+    transform: none
+  }
+
+  /* reels: video thumbnails */
+  .tabs {
+    position: relative
+  }
+
+  .grid.reels .th {
+    aspect-ratio: 9/13.5
+  }
+
+  .th img.ti {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s
+  }
+
+  .card:hover .th img.ti {
+    transform: scale(1.05)
+  }
+
+  .th video.tv {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .25s
+  }
+
+  .th video.tv.ok {
+    opacity: 1
+  }
+
+  .th.hv:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 55%, rgba(0, 0, 0, .4));
+    pointer-events: none
+  }
+
+  .th.hv b {
+    display: none
+  }
+
+
+  /* case study hero: heading/lead were dark-on-dark */
+  .cv .sf {
+    color: #f4f1e6
+  }
+
+  .cv .lead {
+    color: #c6d7d3
+  }
+
+  .cv .lb {
+    color: #02FEBB
+  }
+
+  .big {
+    line-height: 1.25;
+    padding-bottom: .3em
+  }
+
+  .big+.lb {
+    margin-top: 12px
+  }
+
+  /* case study hero CTA */
+  .row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center
+  }
+
+  .pill.go {
+    background: #02FEBB;
+    color: #000;
+    transition: transform .2s
+  }
+
+  .pill.go:hover {
+    transform: translateY(-2px)
+  }
+
+  @media(max-width:760px), (hover:none) {
+    .pl {
+      opacity: 1;
+      transform: none
+    }
+  }
+
+  @media(max-width:1050px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr)
+    }
+  }
+
+  @media(max-width:760px) {
+    :root {
+      --g: 16px
+    }
+
+    .nav {
+      height: 64px
+    }
+
+    .logo img {
+      height: 40px
+    }
+
+    .mb {
+      display: block
+    }
+
+    header.mo {
+      background: #0c0c0b;
+      color: #fff;
+      border-bottom-color: rgba(255, 255, 255, .12)
+    }
+
+    .nl {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 4px calc(var(--g) + env(safe-area-inset-right, 0px)) 22px calc(var(--g) + env(safe-area-inset-left, 0px));
+      background: #0c0c0b;
+      color: #fff;
+      max-height: calc(100vh - 64px);
+      max-height: calc(100svh - 64px);
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity .25s, transform .25s, visibility 0s linear .25s
+    }
+
+    .nl.open {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+      transition-delay: 0s
+    }
+
+    .nl a {
+      display: block
+    }
+
+    .nl a:not(.cta) {
+      font-size: 22px;
+      letter-spacing: .02em;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .12)
+    }
+
+    .nl .cta {
+      margin-top: 22px;
+      padding: 16px 18px;
+      text-align: center;
+      font-size: 13px
+    }
+
+    .hero {
+      padding: 96px 0 36px
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 12.5vw, 76px);
+      margin: 14px 0 22px
+    }
+
+    .hb {
+      width: 100%
+    }
+
+    .hb a {
+      flex: 1 1 100%;
+      text-align: center;
+      padding: 15px 18px
+    }
+
+    .wk {
+      padding: 56px 0 20px
+    }
+
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px 10px
+    }
+    .cv {
+      grid-template-columns: 1fr
+    }
+
+
+    .cv .im {
+      min-height: 300px;
+      order: -1
+    }
+
+    .bar {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0 20px
+    }
+
+    .tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none
+    }
+
+    .tab {
+      flex: none
+    }
+
+    .cap h3 {
+      font-size: 13px
+    }
+
+    .end {
+      padding: 40px 0
+    }
+
+    .end .sh {
+      flex-direction: column;
+      align-items: flex-start
+    }
+
+    #cs .x {
+      right: calc(var(--sb, 0px) + 16px + env(safe-area-inset-right, 0px));
+      top: calc(14px + env(safe-area-inset-top, 0px))
+    }
+
+    .pill {
+      padding: 14px 24px
+    }
+  }
+
+  @media(max-width:640px) {
+    .rw {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      min-width: 0;
+      gap: 8px 10px;
+      padding: 14px 4px
+    }
+
+    .rw.h {
+      display: none
+    }
+
+    .rw>div:first-child {
+      grid-column: 1/-1
+    }
+
+    .rw>span {
+      display: flex;
+      flex-direction: column;
+      font-weight: 700;
+      font-size: 15px
+    }
+
+    .rw>span:before {
+      content: attr(data-l);
+      font: 800 9px 'DM Sans';
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #7b7b70;
+      margin-bottom: 2px
+    }
+  }
+
+
+  @media(prefers-reduced-motion:reduce) {
+
+    *,
+    *:before,
+    *:after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important
+    }
+
+    .rv {
+      opacity: 1;
+      transform: none
+    }
+  }
+
+  /* krishvi case study images */
+  .fg {
+    margin: 0
+  }
+
+  .fg img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, .08);
+    background: #e9e4d4
+  }
+
+  .fg figcaption {
+    font: 800 11px 'DM Sans';
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #01392b;
+    margin-top: 8px
+  }
+
+  .dk .fg figcaption {
+    color: #b7d1cb
+  }
+
+  .dk .fg img {
+    border-color: #105b48
+  }
+
+  .fg.wide {
+    margin-top: 30px
+  }
+
+  .fgrid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 18px;
+    margin-top: 32px;
+    align-items: start
+  }
+
+  .fgrid .tall img {
+    aspect-ratio: 1063/1350
+  }
+
+  .fcol {
+    display: grid;
+    gap: 18px
+  }
+
+  .tg2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 32px
+  }
+
+  .ev {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 16px;
+    align-items: start
+  }
+
+  .qr {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-top: 30px;
+    padding: 16px;
+    border: 1px solid #ddd8c8;
+    border-radius: 18px;
+    background: #fffcf5
+  }
+
+  .qr img {
+    width: 96px;
+    height: 96px;
+    border-radius: 8px;
+    flex: none
+  }
+
+  @media(max-width:760px) {
+
+    .fgrid,
+    .ev {
+      grid-template-columns: 1fr
+    }
+
+    .qr {
+      flex-direction: column;
+      align-items: flex-start
+    }
+  }
+
+  /* ==========================================================
+     Image support in the popup
+     ========================================================== */
+
+
+  /* ==========================================================
+     Case study highlights: spotlight, popups, floating button
+     ========================================================== */
+
+  @property --a {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false
+  }
+
+  @keyframes ping {
+    0% {
+      box-shadow: 0 0 0 0 rgba(2, 254, 187, .65)
+    }
+
+    80%,
+    100% {
+      box-shadow: 0 0 0 10px rgba(2, 254, 187, 0)
+    }
+  }
+
+  @keyframes spin {
+    to {
+      --a: 360deg
+    }
+  }
+
+  @keyframes bar {
+    from {
+      transform: scaleX(1)
+    }
+
+    to {
+      transform: scaleX(0)
+    }
+  }
+
+  /* pulsing dot on the nav link and on the Case Studies tab */
+  .nl a.hot:after,
+  .tab.hot:after {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-left: 8px;
+    border-radius: 50%;
+    background: var(--ac);
+    vertical-align: middle;
+    animation: ping 1.8s infinite
+  }
+
+  /* spotlight section */
+  .spot {
+    padding: 76px 0 0;
+    scroll-margin-top: 72px
+  }
+
+  .spot-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px
+  }
+
+  .spot-h .ey {
+    color: #009e75
+  }
+
+  .spot-h h2 {
+    font: 600 clamp(34px, 5.5vw, 72px)/.95 'Space Grotesk';
+    letter-spacing: -.07em;
+    margin: 10px 0 0
+  }
+
+  .spot-h h2 span {
+    color: #009e75
+  }
+
+  .gh2 {
+    padding: 12px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    background: none;
+    font: 700 12px 'Space Grotesk';
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: background .2s, color .2s
+  }
+
+  .gh2:hover {
+    background: var(--ink);
+    color: var(--bg)
+  }
+
+  .spot-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 18px
+  }
+
+  .spot-grid.one {
+    grid-template-columns: 1fr
+  }
+
+  /* featured card with a travelling accent border */
+  .sp-f {
+    position: relative;
+    isolation: isolate;
+    min-height: 520px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #0b0b0a;
+    color: #fff;
+    cursor: pointer;
+    outline-offset: 4px
+  }
+
+  .sp-f .bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    transition: transform .8s
+  }
+
+  .sp-f:hover .bg {
+    transform: scale(1.05)
+  }
+
+  .sp-f:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(rgba(0, 0, 0, .05) 20%, rgba(0, 0, 0, .85))
+  }
+
+  .sp-f:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 2px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--a), transparent 0 68%, var(--ac) 86%, transparent);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    animation: spin 4s linear infinite;
+    pointer-events: none
+  }
+
+  .sp-tag {
+    padding: 6px 9px;
+    border-radius: 2px;
+    background: var(--ac);
+    color: #111;
+    font: 800 9px/1 'DM Sans';
+    letter-spacing: .09em;
+    text-transform: uppercase
+  }
+
+  .sp-f h3 {
+    margin: 14px 0 6px;
+    font: 600 clamp(38px, 5vw, 64px)/.95 'Space Grotesk';
+    letter-spacing: -.06em
+  }
+
+  .sp-stat b {
+    display: block;
+    font: 700 clamp(40px, 6vw, 76px)/1.05 'Space Grotesk';
+    letter-spacing: -.05em;
+    color: var(--ac)
+  }
+
+  .sp-stat small {
+    display: block;
+    margin-top: 2px;
+    font: 700 11px 'Space Grotesk';
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #d4d4cf
+  }
+
+  .sp-f p {
+    max-width: 46ch;
+    margin: 14px 0 20px;
+    font-size: 14px;
+    color: #d8d8d2
+  }
+
+  .sp-go {
+    display: inline-flex;
+    gap: 8px;
+    padding: 13px 18px;
+    border-radius: 3px;
+    background: var(--ac);
+    color: #111;
+    font: 800 12px 'Space Grotesk';
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: transform .2s
+  }
+
+  .sp-f:hover .sp-go {
+    transform: translateY(-2px)
+  }
+
+  /* smaller case study rows */
+  .sp-list {
+    display: grid;
+    gap: 18px;
+    grid-auto-rows: 1fr
+  }
+
+  .sp-c {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: transform .25s, border-color .25s
+  }
+
+  .sp-c:hover {
+    transform: translateY(-3px);
+    border-color: var(--ink)
+  }
+
+  .sp-th {
+    flex: none;
+    width: 84px;
+    height: 84px;
+    display: grid;
+    place-items: center;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, .85);
+    font: 700 34px 'Space Grotesk'
+  }
+
+  .sp-tx {
+    flex: 1;
+    min-width: 0
+  }
+
+  .sp-tx h3 {
+    margin: 0;
+    font: 600 20px 'Space Grotesk';
+    letter-spacing: -.03em
+  }
+
+  .sp-tx p {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: var(--mut)
+  }
+
+  .sp-tx em {
+    display: inline-block;
+    margin-top: 8px;
+    font: 800 9px/1 'DM Sans';
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: #009e75
+  }
+
+  .sp-ar {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transition: .25s
+  }
+
+  .sp-c:hover .sp-ar {
+    background: var(--ac);
+    border-color: var(--ac);
+    color: #111;
+    transform: translate(2px, -2px)
+  }
+
+  /* animated popup that slides in with a case study teaser */
+  .pop {
+    position: fixed;
+    left: calc(24px + env(safe-area-inset-left, 0px));
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    width: min(380px, calc(100% - 48px));
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 40px 14px 12px;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px) scale(.96);
+    transition: transform .5s cubic-bezier(.2, .9, .3, 1.2), opacity .35s, visibility 0s linear .5s
+  }
+
+  .pop.on {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s
+  }
+
+  .pop-th {
+    flex: none;
+    width: 76px;
+    height: 76px;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    color: rgba(255, 255, 255, .85);
+    font: 700 30px 'Space Grotesk'
+  }
+
+  .pop-tx {
+    min-width: 0
+  }
+
+  .pop-tx small {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    font: 800 9px/1 'DM Sans';
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #009e75
+  }
+
+  .pop-tx small:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ac);
+    animation: ping 1.8s infinite
+  }
+
+  .pop-tx h4 {
+    margin: 0;
+    font: 600 17px 'Space Grotesk';
+    letter-spacing: -.02em
+  }
+
+  .pop-tx p {
+    margin: 3px 0 0;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--mut);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden
+  }
+
+  .pop-tx em {
+    display: inline-block;
+    margin-top: 6px;
+    font: 700 11px 'Space Grotesk';
+    font-style: normal;
+    letter-spacing: .04em
+  }
+
+  .pop-x {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: var(--mut);
+    font-size: 19px;
+    line-height: 1
+  }
+
+  .pop-x:hover {
+    background: var(--line);
+    color: var(--ink)
+  }
+
+  .pop-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: var(--ac);
+    transform-origin: left;
+    transform: scaleX(0)
+  }
+
+  .pop.on .pop-bar {
+    animation: bar 8s linear forwards
+  }
+
+  .pop:hover .pop-bar {
+    animation-play-state: paused
+  }
+
+  /* floating Case Studies button (desktop) */
+  .fab {
+    position: fixed;
+    right: calc(24px + env(safe-area-inset-right, 0px));
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    background: var(--ac);
+    color: #111;
+    font: 800 12px 'Space Grotesk';
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity .35s, transform .35s, visibility 0s linear .35s
+  }
+
+  .fab.on {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s
+  }
+
+  .fab:hover {
+    transform: translateY(-3px)
+  }
+
+  .fab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #111;
+    animation: ping 1.8s infinite
+  }
+
+  @media(max-width:900px) {
+    .spot-grid {
+      grid-template-columns: 1fr
+    }
+
+    .sp-f {
+      min-height: 440px
+    }
+  }
+
+  @media(max-width:760px) {
+    .spot {
+      padding-top: 56px
+    }
+
+    .sp-f {
+      padding: 22px
+    }
+
+    .sp-c {
+      padding: 16px;
+      gap: 14px
+    }
+
+    .sp-th {
+      width: 68px;
+      height: 68px
+    }
+
+    .pop {
+      left: calc(12px + env(safe-area-inset-left, 0px));
+      bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      width: calc(100% - 24px)
+    }
+  }
+
+  /* ==========================================================
+     Card icons (play = video, zoom = image) and Load more
+     ========================================================== */
+
+  .pl.v,
+  .pl.z {
+    opacity: 1;
+    transform: none;
+    background: rgba(0, 0, 0, .35);
+    backdrop-filter: blur(4px)
+  }
+
+  .pl.v svg {
+    margin-left: 2px
+  }
+
+  .card:hover .pl.v,
+  .card:hover .pl.z {
+    transform: scale(1.1);
+    background: var(--ac);
+    border-color: var(--ac);
+    color: #111
+  }
+
+
+  .more {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px
+  }
+
+  .more[hidden] {
+    display: none
+  }
+
+  .more .gh2 {
+    padding: 15px 28px
+  }
+
+  .more .gh2 span {
+    color: var(--mut);
+    margin-left: 4px
+  }
+
+  .more .gh2:hover span {
+    color: inherit
+  }
+
+  /* floating button on small screens: hidden while a popup card is showing */
+  @media(max-width:760px) {
+    .fab {
+      right: calc(14px + env(safe-area-inset-right, 0px));
+      bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+      padding: 12px 16px
+    }
+
+    body.pop-on .fab {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px)
+    }
+  }
+
+  /* ========== 4-minute "interested in a project?" popup ========== */
+  .lp {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s, visibility 0s linear .35s
+  }
+
+  .lp.on {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s
+  }
+
+  .lp-box {
+    position: relative;
+    width: min(440px, 100%);
+    padding: 40px 32px 32px;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .4);
+    text-align: center;
+    transform: translateY(24px) scale(.96);
+    transition: transform .5s cubic-bezier(.2, .9, .3, 1.2)
+  }
+
+  .lp.on .lp-box {
+    transform: none
+  }
+
+  .lp-box small {
+    display: block;
+    margin-bottom: 12px;
+    font: 700 11px 'Space Grotesk';
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--mut)
+  }
+
+  .lp-box h3 {
+    margin: 0 0 12px;
+    font: 700 clamp(26px, 6vw, 32px)/1.1 'Space Grotesk';
+    letter-spacing: -.03em
+  }
+
+  .lp-box p {
+    margin: 0 0 26px;
+    font-size: 15px;
+    color: var(--mut)
+  }
+
+  .lp-go {
+    display: inline-block;
+    padding: 16px 34px;
+    border-radius: 30px;
+    background: #02FEBB;
+    color: #000;
+    font: 800 12px 'DM Sans';
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform .2s
+  }
+
+  .lp-go:hover {
+    transform: translateY(-2px)
+  }
+
+  .lp-x {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--mut);
+    font-size: 24px;
+    cursor: pointer
+  }
+
+  .lp-x:hover {
+    color: var(--ink)
+  }
+
+  body.lp-open .pop,
+  body.lp-open .fab {
+    opacity: 0;
+    visibility: hidden
+  }
+
+</style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header id="hd">
+    <div class="sh nav">
+      <a class="logo" href="#top" aria-label="Boxedge Solutions home">
+        <img src="BE-LOGO.webp" alt="Boxedge" width="826" height="578" decoding="async">
+      </a>
+      <button class="mb" id="mb" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nl">
+        <span></span><span></span>
+      </button>
+      <nav class="nl" id="nl" aria-label="Main">
+        <a href="#work" data-s data-go="film">Work</a>
+        <a class="hot" href="#spotlight" data-s>Case Studies</a>
+        <a class="cta" href="#" data-wa data-s>Let's Talk ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <video id="hv" autoplay muted loop playsinline></video>
+    <div class="sh hc">
+      <div class="ey">Boxedge Solutions · Bengaluru</div>
+      <h1 id="h1">We make brands impossible to scroll past.</h1>
+      <div class="hr">
+        <p>Films, AI, design &amp; campaigns. Made for brands with something to say.</p>
+        <div class="hb">
+          <a class="cta" href="#spotlight">See the work ↓</a>
+          <a class="gh" href="#" data-wa>Start on WhatsApp ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mq" id="mq" aria-hidden="true"></div>
+
+  <!-- Case study spotlight (built from the 'case' rows in the project list) -->
+  <section class="sh spot" id="spotlight" aria-labelledby="spt">
+    <div class="spot-h">
+      <div>
+        <div class="ey">Case Studies</div>
+        <h2 id="spt">Real brands. Real numbers<span>.</span></h2>
+      </div>
+      <button class="gh2" id="spAll" type="button">View all case studies ↗</button>
+    </div>
+    <div class="spot-grid" id="spGrid"></div>
+  </section>
+
+  <!-- Selected work -->
+  <main id="work" class="sh wk">
+    <h2>Selected Work<span>.</span></h2>
+    <div class="bar">
+      <div class="tabs" id="tabs" role="group" aria-label="Filter projects"></div>
+      <div class="ct" id="ct" aria-live="polite"></div>
+    </div>
+    <section class="grid" id="grid"></section>
+    <div class="more" id="more" hidden>
+      <button class="gh2" id="moreBtn" type="button">Load more <span id="moreN"></span></button>
+    </div>
+  </main>
+
+  <!-- Closing CTA -->
+  <section class="end">
+    <div class="sh">
+      <h2>Have a project in mind<span>?</span></h2>
+      <a class="cta" href="#" data-wa>Chat on WhatsApp ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="sh">
+      <span>© Boxedge Solutions</span>
+      <span>Ideas into impact.</span>
+    </div>
+  </footer>
+
+  <!-- Floating case study button -->
+  <a class="fab" id="fab" href="#spotlight"><span class="fab-dot"></span>Case Studies ↗</a>
+
+  <!-- Project popup: vertical feed (filled by openP) -->
+  <div class="md" id="md" role="dialog" aria-modal="true" aria-label="Project viewer">
+    <div class="fd" id="fd" tabindex="-1"></div>
+    <button class="fc" id="mx" aria-label="Close">×</button>
+    <button class="fc" id="snd" aria-label="Mute or unmute" hidden></button>
+    <div class="fn">
+      <button class="fc" id="fup" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></button>
+      <button class="fc" id="fdn" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Case study overlay -->
+  <div id="cs" role="dialog" aria-modal="true" aria-label="Case study">
+    <div id="pg"></div>
+    <button class="x" id="cx" aria-label="Close case study">×</button>
+    <div id="cb"></div>
+  </div>
+
+  <!-- "Interested in a project like this?" popup (opens after 2 minutes on the site) -->
+  <div class="lp" id="lp" role="dialog" aria-modal="true" aria-labelledby="lpt">
+    <div class="lp-box">
+      <button class="lp-x" id="lpx" type="button" aria-label="Close">×</button>
+      <small>Boxedge Solutions</small>
+      <h3 id="lpt">Interested in a project like this?</h3>
+      <p>Tell us about your next campaign, film or brand project. We reply on WhatsApp.</p>
+      <a class="lp-go" id="lpgo" target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
+    </div>
+  </div>
+
+  <script>
+    const WA = '917676296322';        // WhatsApp: 91 + 7676296322
+    const HERO_VIDEO = 'videos/reels-and-films-13.mp4';            // optional single hero video URL (empty = play the reels in sequence)
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+
+    // Tabs: [key, label]
+    const T = [
+      ['film', 'Reels & Films'],
+      ['ai', 'AI Content'],
+      ['design', 'Design'],
+      ['photo', 'Photography'],
+      ['case', 'Case Studies']
+    ];
+
+    /*
+      ==========================================================
+      HOW TO ADD WORK
+      ==========================================================
+      Every project is one row:   [tab, title, category, description, file]
+
+        tab   : 'film' | 'ai' | 'design' | 'photo'
+        file  : a VIDEO  -> videos/name.mp4  (.webm .mov also work)
+                or an IMAGE -> images/name.jpg  (.png .webp .avif also work)
+                The site detects the type from the file extension, so videos and
+                images can be mixed freely inside the same tab.
+
+      Examples:
+        ['design', 'Poster Set', 'Design · Campaign', 'Short description.', 'images/poster-set.jpg'],
+        ['film',   'New Reel',   'Food · Reel',       'Short description.', 'videos/9.mp4'],
+
+      There is no limit per tab. Cards appear in the order written here.
+      The demo images in /images (demo-01 ... demo-16) are placeholders: replace the file
+      names with your own.
+
+      Case Studies (tab 'case') use a different row shape. See the bottom of the list.
+    */
+    const P = [
+      // ---- Reels & Films ----
+      ['film', 'The Perfect Coffee Ritual', 'Lifestyle / Brand Promotion', 'Celebrate the simple pleasure of freshly brewed coffee with Cothas Coffee. Bring rich aroma, authentic taste, and everyday moments together in every cup.', 'videos/reels-and-films-1.mp4'],
+      ['film', 'Bold Coffee, Rich Flavour', 'Product Promotion', 'Discover a coffee experience crafted for those who love deep flavour and rich aroma. Make every coffee moment special with Cothas Coffee.', 'videos/reels-and-films-2.mp4'],
+      ['film', 'Coffee Moments, Anytime', 'Lifestyle / Product Promotion', 'From refreshing coffee creations to everyday indulgence, enjoy coffee your way. Make every moment more memorable with Cothas Coffee.', 'videos/reels-and-films-3.mp4'],
+      ['film', 'Your Everyday Coffee Companion', 'Brand Promotion / Lifestyle', 'Bring people together over the comforting taste of great coffee. Cothas Coffee makes everyday breaks more enjoyable, one cup at a time.', 'videos/reels-and-films-4.mp4'],
+      ['film', 'A Taste of Coffee Perfection', 'Product Promotion', 'Experience the inviting aroma and satisfying taste of quality coffee. Let Cothas Coffee turn your daily coffee routine into a delightful ritual.', 'videos/reels-and-films-5.mp4'],
+      ['film', 'The Art of Brewing Coffee', 'Behind the Scenes / Brand Story', 'Discover the craft and care behind a great coffee experience. Every brewing moment reflects the passion for delivering a satisfying cup of coffee.', 'videos/reels-and-films-6.mp4'],
+      ['film', 'Refresh Your Coffee Routine', 'Lifestyle / Coffee Preparation', 'Explore refreshing ways to enjoy your favourite coffee. Add a creative twist to your daily routine with delicious Cothas Coffee moments.', 'videos/reels-and-films-7.mp4'],
+      ['film', 'From Coffee Beans to Your Cup', 'Product Promotion / Coffee Craft', 'Celebrate the rich character of coffee, from aromatic beans to a satisfying brew. Enjoy the distinctive coffee experience that makes every cup special.', 'videos/reels-and-films-8.mp4'],
+      ['film', 'The Coffee Experience', 'Lifestyle / Brand Promotion', 'Discover the pleasure of enjoying coffee made with care and passion. Cothas Coffee brings flavour and comfort to your everyday coffee moments.', 'videos/reels-and-films-9.mp4'],
+      ['film', 'Brew Your Perfect Cup', 'Coffee Preparation / Product Promotion', 'Turn your coffee cravings into a freshly brewed experience. Enjoy the aroma, flavour, and satisfaction of a perfectly prepared cup.', 'videos/reels-and-films-10.mp4'],
+      ['film', 'Coffee Made Convenient', 'Coffee Technology / Brand Promotion', 'Experience convenient coffee preparation with modern coffee-making solutions. Enjoy your favourite coffee with ease, whether at work or during a busy day.', 'videos/reels-and-films-11.mp4'],
+      ['film', 'A Refreshing Twist on Coffee', 'Beverage Promotion / Lifestyle', 'Give your coffee routine a refreshing twist with creative beverage combinations. Discover new ways to savour the taste and versatility of coffee.', 'videos/reels-and-films-12.mp4'],
+      ['film', 'Made for Coffee Lovers', 'Lifestyle / Brand Promotion', 'For those who appreciate the aroma, taste, and comfort of a good cup, coffee is more than a beverage. Make every sip count with Cothas Coffee.', 'videos/reels-and-films-13.mp4'],
+      ['film', 'Coffee, Crafted with Care', 'Brand Story / Coffee Experience', 'Celebrate the people and passion behind a memorable coffee experience. From preparation to the first sip, every detail adds to the joy of coffee.', 'videos/reels-and-films-14.mp4'],
+      ['film', 'Good Coffee, Good Moments', 'Product Promotion / Lifestyle', 'Take a moment to enjoy the rich taste and comforting aroma of coffee. Make your everyday breaks more satisfying with Cothas Coffee.', 'videos/reels-and-films-15.mp4'],
+      ['film', 'Make Every Moment Delicious', 'Product Promotion / Food Pairing', 'Bring your favourite coffee moments to life with delicious food pairings and everyday indulgence. Create little moments of happiness with every serving.', 'videos/reels-and-films-16.mp4'],
+      ['film', 'Brewed for Beautiful Moments', 'Lifestyle / Product Promotion', 'Set the mood for a relaxing coffee break with an inviting brew and a thoughtful presentation. Enjoy the little pleasures that make every day special.', 'videos/reels-and-films-17.mp4'],
+      ['film', 'The Richness of Every Bean', 'Product Promotion / Coffee Craft', 'Celebrate the rich character and aroma of coffee beans. Discover the pleasure of a flavourful coffee experience with every brew.', 'videos/reels-and-films-18.mp4'],
+      ['film', 'The Perfect Pour', 'Coffee Preparation / Product Promotion', 'Watch the magic of coffee come alive, from a smooth pour to a comforting cup. Enjoy the aroma and warmth of your favourite coffee ritual.', 'videos/reels-and-films-19.mp4'],
+      ['film', 'Coffee Brings Us Together', 'Lifestyle / Emotional Branding', 'Some of the best moments happen over a cup of coffee. Celebrate conversations, connections, and everyday happiness with Cothas Coffee.', 'videos/reels-and-films-20.mp4'],
+      ['film', 'The Art of Traditional Tea Making', 'Lifestyle / Beverage Promotion', 'Celebrate the beauty of traditional preparation and the comfort of a freshly brewed beverage. Every pour brings warmth, flavour, and a moment to slow down.', 'videos/reels-and-films-21.mp4'],
+      ['film', 'Everyday Moments, Extraordinary Stories', 'Lifestyle / Brand Storytelling', 'Capture authentic everyday moments through engaging visuals and relatable experiences. A simple story can create a memorable connection with the audience.', 'videos/reels-and-films-22.mp4'],
+      ['film', 'Trust Us, We\'re Here for You', 'Brand Awareness / Brand Trust', 'Build meaningful connections through trust, reliability, and authentic experiences. A strong brand is built on the confidence people place in it.', 'videos/reels-and-films-23.mp4'],
+      ['film', 'The Modern Grooming Experience', 'Lifestyle / Service Promotion', 'Discover a refined grooming experience with attention to detail and personal style. Make every visit an opportunity to look sharp and feel confident.', 'videos/reels-and-films-24.mp4'],
+      ['film', 'Architecture That Inspires', 'Architecture / Interior Design', 'Explore thoughtfully designed spaces where aesthetics meet functionality. Every detail contributes to an atmosphere that feels distinctive and inviting.', 'videos/reels-and-films-25.mp4'],
+      ['film', 'A New Experience Is Coming', 'Event Promotion / Teaser Campaign', 'Build anticipation for an upcoming experience through cinematic visuals and a date-led teaser. Stay tuned for something worth looking forward to.', 'videos/reels-and-films-26.mp4'],
+      ['film', 'Behind the Perfect Experience', 'Lifestyle / Brand Storytelling', 'Discover the people, atmosphere, and details that shape a memorable experience. Every moment contributes to a story worth sharing.', 'videos/reels-and-films-27.mp4'],
+      ['film', 'Your Favourite Café Moments', 'Café Promotion / Lifestyle', 'Enjoy the perfect blend of ambience, refreshing beverages, and relaxed moments. Find your favourite spot to unwind, connect, and recharge.', 'videos/reels-and-films-28.mp4'],
+      ['film', 'Flavours Worth Discovering', 'Food & Beverage / Restaurant Promotion', 'Explore delicious food and inviting dining experiences through vibrant visuals. Discover flavours that turn an ordinary meal into something special.', 'videos/reels-and-films-29.mp4'],
+      ['film', 'Freshly Prepared, Full of Flavour', 'Food Preparation / Product Promotion', 'Celebrate the freshness and care that go into preparing delicious food. From the first ingredient to the final presentation, every detail matters.', 'videos/reels-and-films-30.mp4'],
+      ['film', 'The Secret Behind Great Taste', 'Food Product Promotion / Cooking', 'Discover the ingredients and preparation techniques that bring every dish to life. Great flavour begins with quality ingredients and a passion for cooking.', 'videos/reels-and-films-31.mp4'],
+      ['film', 'Little Moments of Happiness', 'Lifestyle / Family Storytelling', 'Celebrate the small, joyful moments that make everyday life special. A heartwarming visual story creates an emotional connection with viewers.', 'videos/reels-and-films-32.mp4'],
+      ['film', 'Your Next Dining Destination', 'Restaurant Promotion / Lifestyle', 'Experience a welcoming dining atmosphere paired with delicious food and memorable moments. Make your next outing an occasion to savour.', 'videos/reels-and-films-33.mp4'],
+      ['film', 'Discover the SALT Experience', 'Restaurant Branding / Brand Awareness', 'Step into an inviting dining space designed for memorable food and social experiences. Discover the ambience and hospitality that make dining out special.', 'videos/reels-and-films-34.mp4'],
+      ['film', 'Dilli Ke Asli Zayke Ka Mazaa', 'Indian Cuisine / Restaurant Promotion', 'Savour the bold flavours and authentic appeal of Indian cuisine. Bring the taste of Delhi to your table with dishes made to delight every food lover.', 'videos/reels-and-films-35.mp4'],
+      ['film', 'A Feast of Authentic Flavours', 'Indian Food / Food Promotion', 'Explore a vibrant spread of traditional Indian dishes, rich accompaniments, and tempting flavours. Celebrate the variety and joy of Indian dining.', 'videos/reels-and-films-36.mp4'],
+      ['film', 'Crafted Fresh, Served with Care', 'Food Preparation / Restaurant Branding', 'Watch the skill and attention to detail behind carefully prepared dishes. From preparation to presentation, every step helps create a memorable dining experience.', 'videos/reels-and-films-37.mp4'],
+      // demo images always come last
+      ['film', 'Frame 38', 'Food · Still Frame', 'Key frames pulled from our food reels.', 'images/demo-01.jpg'],
+      ['film', 'Frame 39', 'Beverage · Still Frame', 'Key frames pulled from our beverage reels.', 'images/demo-02.jpg'],
+
+      // ---- AI Content ----
+      ['ai', 'Made with Imagination', 'AI Content · Brand Film', 'AI-led visual worlds for brands, clearly labelled as AI-generated.', 'videos/1.mp4'],
+      ['ai', 'Another Reality', 'AI Content · Film', 'Experimental scenes that are hard to capture with conventional production.', 'videos/2.mp4'],
+      ['ai', 'Future Flavours', 'AI Content · Product Visual', 'Surreal AI-assisted product concepts and campaign visuals.', 'images/demo-03.jpg'],
+      ['ai', 'Dream Kitchen', 'AI Content · Food Visual', 'Impossible kitchens and dishes, imagined with AI and finished by hand.', 'videos/4.mp4'],
+      ['ai', 'Neon Pour', 'AI Content · Beverage Film', 'Glowing, stylised beverage worlds built for launch campaigns.', 'videos/5.mp4'],
+      ['ai', 'Virtual Muse', 'AI Content · Fashion Visual', 'AI-generated models and styling concepts, clearly labelled as such.', 'images/demo-04.jpg'],
+      ['ai', 'Living Posters', 'AI Content · Motion Art', 'Static campaign art brought to life with AI-assisted motion.', 'videos/7.mp4'],
+      ['ai', 'Tomorrow\'s Spaces', 'AI Content · Interior Concept', 'AI-assisted interior concepts shown before a single wall is built.', 'images/demo-05.jpg'],
+
+      // ---- Design ----
+      ['design', 'A Little More Colour', 'Design · Campaign Artwork', 'Posters, key visuals, carousels and social design systems.', 'images/demo-06.jpg'],
+      ['design', 'Scroll Stoppers', 'Digital · Social Design', 'Thumb-stopping ad creatives and campaign design systems.', 'images/demo-07.jpg'],
+      ['design', 'Brand in Every Detail', 'Branding · Identity', 'Logos, menus, packaging and the assets that carry an identity.', 'images/demo-08.jpg'],
+      ['design', 'Type in Motion', 'Design · Motion Graphics', 'Animated typography and kinetic graphics for social and ads.', 'videos/4.mp4'],
+      ['design', 'Menu Moods', 'Design · Menu & Print', 'Menus and printed collateral designed to match the room.', 'images/demo-09.jpg'],
+      ['design', 'Pack It Right', 'Design · Packaging', 'Packaging concepts that stand out on a shelf and on a screen.', 'videos/6.mp4'],
+      ['design', 'Launch Kit', 'Design · Campaign System', 'Launch-day creative sets: posters, stories, banners and standees.', 'images/demo-10.jpg'],
+      ['design', 'Identity Reveal', 'Branding · Logo Animation', 'Logo reveals and identity walkthroughs in motion.', 'videos/8.mp4'],
+
+      // ---- Photography ----
+      ['photo', 'Product Stories', 'Product · Photography', 'Pack shots and e-commerce creatives with character.', 'images/demo-11.jpg'],
+      ['photo', 'Spaces That Speak', 'Interiors · Photography', 'Interior photography and spatial storytelling.', 'images/demo-12.jpg'],
+      ['photo', 'Little Moments', 'Lifestyle · Photography', 'Brand lifestyle shoots, portraits and ambience.', 'videos/3.mp4'],
+      ['photo', 'Plated Up', 'Food · Photography', 'Food photography styled to look as good as it tastes.', 'images/demo-13.jpg'],
+      ['photo', 'Golden Hour', 'Brand · Photography', 'Natural-light brand shoots, shown as behind-the-scenes motion.', 'images/demo-14.jpg'],
+      ['photo', 'Faces of the Brand', 'Portrait · Photography', 'Team and founder portraits with warmth and personality.', 'images/demo-15.jpg'],
+      ['photo', 'Still Life, Alive', 'Product · Photography', 'Product still life with a touch of motion.', 'videos/7.mp4'],
+      ['photo', 'Event Frames', 'Events · Photography', 'Launches, openings and events, caught as they happen.', 'images/demo-16.jpg'],
+
+      // ---- Case Studies ----
+      // [tab, title, category, description, '', type, thumbnail, statNumber, statLabel]
+      //   type 'k' = the full Krishvi case study, 'd' = the full Deck of Brews case study, 'x' = "coming soon" page
+      //   thumbnail, statNumber and statLabel are optional; they feed the spotlight section and the popups.
+      ['case', 'Krishvi', 'Pre-launch Brand & Organic Digital', '136,230 organic views before the doors opened. Brand identity, content system and a coming-soon website.', '', 'k', 'krishvi-case/krishvi.jpeg', '136230', 'organic views in 41 days'],
+      ['case', 'Deck of Brews', 'Meta Ads · Happy Hour & Corporate Packages', 'Two direct-response campaigns for a rooftop brewery: 1,548 callback requests from Happy Hour and 200+ corporate leads a month.', '', 'd', 'dob-case/dob-hero.jpg', '1548', 'callback requests from Meta Ads'],
+      ['case', 'SALT Restaurants', 'Campaigns · Reels & Films', 'Campaigns, content production and social-first creative for restaurants.', '', 'x'],
+      ['case', 'Ganbeii Microbrewery', 'Campaigns · Reels & Films', 'Seasonal campaigns, beverage films and experience-led content.', '', 'x'],
+      ['case', 'Dezign Code', 'Interiors · Digital Campaigns', 'Interior design marketing and lead-generation creative.', '', 'x'],
+      ['case', 'Kwality Foods', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Looking Good Furniture', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Trevel', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Barrys', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Featherlite Evoma', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Gold Rush', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Roto', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Niraamaya Retreats', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Lakeview Milk Bar', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Spin Cycles', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x'],
+      ['case', 'Skydeck', 'Digital Marketing · Campaigns', 'Case study coming soon.', '', 'x']
+    ];
+
+    /*
+      DEMO FILLER: adds sample rows so you can see "Load more" working.
+      Set DEMO_FILL to false once your real projects are in the list above.
+    */
+    const DEMO_FILL = true;
+    if (DEMO_FILL) {
+      const kinds = {
+        film: ['Frame', 'Still Frame'],
+        ai: ['AI Visual', 'AI Content'],
+        design: ['Design', 'Design'],
+        photo: ['Shoot', 'Photography']
+      };
+      Object.entries(kinds).forEach(([tab, [name, cat]]) => {
+        for (let n = 9; n <= 20; n++) {
+          const useImg = tab == 'film' || n % 2 == 0; // Reels & Films filler = demo images only, so they stay after the real videos
+          P.push([tab, `${name} ${String(n).padStart(2, '0')}`, `${cat} · Sample`, 'Sample project. Replace with your own work.',
+            useImg ? `images/demo-${String((n % 16) + 1).padStart(2, '0')}.jpg` : `videos/${(n % 8) + 1}.mp4`
+          ])
+        }
+      });
+    }
+
+    const PAGE = 12; // cards shown per tab before "Load more" (12 fits 2, 3 and 4 column layouts)
+
+    let cur = 'film', last = null;
+
+    // media type comes from the file extension (videos and images can be mixed in any tab)
+    const isVid = s => /\.(mp4|webm|mov|m4v|ogv)([?#]|$)/i.test(s || '');
+
+    // card / popup icons
+    const ICON = {
+      play: '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
+      zoom: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 8v5M8 10.5h5"/></svg>'
+    };
+
+    // ---------- Text scramble effect ----------
+    const CH = '!<>-_\\/[]{}=+*^?#%&',
+      RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    function scr(el) {
+      if (RM) return;
+      const t = el.dataset.t || (el.dataset.t = el.textContent);
+      if (!el.style.minWidth && el.offsetWidth) el.style.minWidth = el.offsetWidth + 'px';
+      clearInterval(el._i);
+      let f = 0;
+      el._i = setInterval(() => {
+        el.textContent = [...t].map((c, i) => c === ' ' || i < f / 2 ? c : CH[Math.random() * CH.length | 0]).join('');
+        if (++f > t.length * 2) {
+          clearInterval(el._i);
+          el.textContent = t;
+          el.style.minWidth = ''
+        }
+      }, 26)
+    }
+    const bindS = r => r.querySelectorAll('[data-s]').forEach(e => {
+      e.addEventListener('pointerenter', () => scr(e));
+      e.addEventListener('focus', () => scr(e))
+    });
+    bindS(document);
+    // ---------- Hero video, links & marquee ----------
+    /* hero background video: HERO_VIDEO (one file, loops) or, if empty, the reels play one after another */
+    (() => {
+      const v = $('#hv'),
+        list = HERO_VIDEO ? [HERO_VIDEO] : P.filter(p => p[0] == 'film' && isVid(p[4])).map(p => p[4]);
+      if (!list.length) return;
+      let k = 0,
+        bad = 0;
+      v.muted = true;
+      v.loop = list.length == 1;
+      const go = () => {
+        v.src = list[k];
+        v.style.display = 'block';
+        v.play().catch(() => {})
+      };
+      v.onplaying = () => {
+        bad = 0
+      };
+      v.onended = () => {
+        k = (k + 1) % list.length;
+        go()
+      };
+      v.onerror = () => {
+        if (++bad >= list.length) {
+          v.style.display = 'none';
+          return
+        }
+        k = (k + 1) % list.length;
+        go()
+      };
+      go();
+      if (RM) v.onplaying = () => v.pause()
+    })();
+    $$('[data-wa]').forEach(a => {
+      a.href = wa('Hi Boxedge, I found you through your portfolio and would like to discuss a project.');
+      a.target = '_blank';
+      a.rel = 'noopener'
+    });
+    const mq = 'Films · AI Content · Design · Photography · Campaigns · Case Studies · ';
+    $('#mq').innerHTML = '<div>' + mq.repeat(8) + '</div>';
+    addEventListener('scroll', () => $('#hd').classList.toggle('on', scrollY > 60), {
+      passive: true
+    });
+    // ---------- Project grid (with Load more) ----------
+    $('#tabs').innerHTML = T.map(t => `<button class="tab${t[0] == 'case' ? ' hot' : ''}" data-f="${t[0]}">${t[1]}</button>`).join('');
+
+    let list = [],
+      shown = 0;
+
+    function card([p, i], n) {
+      const h = (i * 47 + 130) % 360,
+        c = p[0] == 'case',
+        v = isVid(p[4]) ? p[4] : '',
+        im = c ? p[6] : (v ? '' : p[4]),
+        icon = c ? '<span class="pl">↗</span>' : `<span class="pl ${v?'v':'z'}">${v?ICON.play:ICON.zoom}</span>`;
+      return `<article class="card" tabindex="0" data-i="${i}" style="animation-delay:${Math.min(n,6)*25}ms"><div class="th${v?' hv':''}" style="background:linear-gradient(150deg,hsl(${h} 55% 30%),hsl(${(h+50)%360} 65% 11%))">${v?`<video class="tv" data-src="${v}#t=0.5" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>`:''}${c&&im?'':`<b>${p[1][0]}</b>`}${im?`<img class="ti" src="${im}" alt="${p[1]} thumbnail" loading="lazy" decoding="async">`:''}<span class="chip">${p[2].split(' · ')[0]}</span>${c?'<span class="cl">Case Study</span>':''}${icon}</div><div class="cap"><div><h3>${p[1]}</h3><p>${p[2]}</p></div><span>↗</span></div></article>`
+    }
+
+    // video thumbnails load only when their card is close to the screen (keeps tab switches instant)
+    const vio = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const v = e.target;
+      vio.unobserve(v);
+      v.preload = 'metadata';
+      v.src = v.dataset.src
+    }), {
+      rootMargin: '300px'
+    });
+
+    function bindCard(c) {
+      const o = () => openP(+c.dataset.i),
+        th = c.firstChild,
+        vd = th.querySelector('video');
+      c.onclick = o;
+      c.onkeydown = e => {
+        if (e.key == 'Enter' || e.key == ' ') {
+          e.preventDefault();
+          o()
+        }
+      };
+      if (vd) {
+        vd.onloadeddata = () => vd.classList.add('ok');
+        vd.onerror = () => {
+          vd.remove();
+          th.classList.remove('hv')
+        };
+        vio.observe(vd)
+      }
+      const ig = th.querySelector('img.ti');
+      if (ig) ig.onerror = () => ig.remove();
+      c.onmousemove = e => {
+        const r = c.getBoundingClientRect(),
+          x = (e.clientX - r.left) / r.width - .5,
+          y = (e.clientY - r.top) / r.height - .5;
+        th.style.transform = `perspective(700px) rotateY(${x*7}deg) rotateX(${-y*7}deg) scale(1.02)`
+      };
+      c.onmouseleave = () => {
+        th.style.transform = ''
+      }
+    }
+
+    // appends the next batch of cards for the current tab
+    function more(focusNew) {
+      const g = $('#grid'),
+        batch = list.slice(shown, shown + PAGE);
+      g.insertAdjacentHTML('beforeend', batch.map((x, n) => card(x, n)).join(''));
+      const fresh = [...g.children].slice(shown);
+      fresh.forEach(bindCard);
+      shown += batch.length;
+      $('#ct').textContent = list.length > PAGE ? `Showing ${shown} of ${list.length}` : list.length + ' ' + (list.length == 1 ? 'project' : 'projects');
+      const left = list.length - shown;
+      $('#more').hidden = left <= 0;
+      $('#moreN').textContent = left > 0 ? `(${left} more)` : '';
+      if (focusNew && fresh[0]) fresh[0].focus({
+        preventScroll: true
+      })
+    }
+
+    function show(f) {
+      cur = f;
+      $$('.tab').forEach(b => b.classList.toggle('a', b.dataset.f == f));
+      list = P.map((p, i) => [p, i]).filter(x => x[0][0] == f);
+      shown = 0;
+      const g = $('#grid');
+      g.className = 'grid' + (f == 'film' ? ' reels' : '');
+      g.innerHTML = '';
+      more();
+      const a = $('.tab.a'),
+        t = $('#tabs');
+      if (a && t.scrollWidth > t.clientWidth) t.scrollTo({
+        left: a.offsetLeft - (t.clientWidth - a.offsetWidth) / 2,
+        behavior: 'smooth'
+      })
+    }
+    $('#moreBtn').onclick = () => more(true);
+    $$('.tab').forEach(b => b.onclick = () => show(b.dataset.f));
+    /* nav: Work -> Reels & Films tab, Case Studies -> case tab; both scroll to the work section */
+    const hd = $('#hd'),
+      mb = $('#mb'),
+      nl = $('#nl');
+    const goWork = () => $('#work').scrollIntoView({
+      behavior: RM ? 'auto' : 'smooth',
+      block: 'start'
+    });
+
+    function closeMenu() {
+      hd.classList.remove('mo');
+      nl.classList.remove('open');
+      mb.setAttribute('aria-expanded', 'false');
+      mb.setAttribute('aria-label', 'Open menu')
+    }
+    $$('[data-go]').forEach(a => a.onclick = e => {
+      e.preventDefault();
+      closeMenu();
+      show(a.dataset.go);
+      goWork();
+      try {
+        history.replaceState(null, '', '#work')
+      } catch (_) {}
+    });
+    $$('#nl a').forEach(a => a.addEventListener('click', closeMenu));
+    mb.onclick = () => {
+      const o = !nl.classList.contains('open');
+      hd.classList.toggle('mo', o);
+      nl.classList.toggle('open', o);
+      mb.setAttribute('aria-expanded', o);
+      mb.setAttribute('aria-label', o ? 'Close menu' : 'Open menu');
+      if (o) $$('#nl [data-s]').forEach((e, i) => setTimeout(() => scr(e), i * 90))
+    };
+    addEventListener('resize', () => {
+      if (innerWidth > 760) closeMenu()
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('header')) closeMenu()
+    });
+    show('film');
+    // ---------- Project popup: endless vertical feed ----------
+    /* Clicking a reel / image opens a full-screen feed of that tab only.
+       Swipe or scroll up / down to move; after the last item it loops back to the first. */
+    const FD = $('#fd'),
+      SND = $('#snd'),
+      IC = {
+        on: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></svg>',
+        off: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>'
+      };
+    let feed = {
+        n: 0,
+        idx: -1,
+        seen: -1,
+        moved: false,
+        tm: 0
+      },
+      sound = true;
+
+    const paintSnd = () => {
+      SND.innerHTML = sound ? IC.on : IC.off
+    };
+    const vidOf = el => el && el.querySelector('video');
+    const slides = () => FD.children;
+
+    // keeps only the active slide and its neighbours loaded; everything else is freed (low memory = smooth playback)
+    function keep(idx) {
+      const n = feed.n,
+        w = new Set();
+      [idx - 1, idx, idx + 1].forEach(k => {
+        w.add(k);
+        // the two clones mirror the real first / last slide, so keep those ready for the loop jump
+        if (n > 1) {
+          if (k <= 0) w.add(n + k);
+          if (k >= n + 1) w.add(k - n)
+        }
+      });
+      [...slides()].forEach((el, k) => {
+        const v = vidOf(el),
+          m = el.querySelector('[data-src]');
+        if (!m) return;
+        if (w.has(k)) {
+          if (!m.getAttribute('src')) m.src = m.dataset.src;
+          if (v) v.preload = 'auto'
+        } else if (v && v.getAttribute('src')) {
+          v.pause();
+          v.removeAttribute('src');
+          v.load()
+        }
+      })
+    }
+
+    const pauseAll = () => $$('#fd video').forEach(v => v.pause());
+
+    function play(el) {
+      const v = vidOf(el);
+      if (!v) return;
+      v.muted = !sound;
+      el.classList.remove('ps');
+      const r = v.play();
+      if (r) r.catch(err => {
+        // only a blocked-autoplay error falls back to muted; an interrupted play (fast scrolling) is ignored
+        if (err && err.name == 'NotAllowedError' && !v.muted) {
+          sound = false;
+          v.muted = true;
+          paintSnd();
+          v.play().catch(() => {})
+        }
+      })
+    }
+
+    function activate(idx) {
+      feed.idx = idx;
+      keep(idx);
+      [...slides()].forEach((el, k) => {
+        const v = vidOf(el);
+        if (v && k != idx) v.pause()
+      });
+      const el = slides()[idx];
+      play(el);
+      SND.hidden = !vidOf(el)
+    }
+
+    // runs once the swipe has stopped: loop jump if we landed on a clone, then play the slide we are on
+    function settle() {
+      const h = FD.clientHeight,
+        n = feed.n;
+      if (!h) return;
+      let idx = Math.round(FD.scrollTop / h);
+      if (n > 1 && (idx == 0 || idx == n + 1)) {
+        idx = idx == 0 ? n : 1;
+        FD.style.scrollSnapType = 'none';
+        FD.scrollTop = idx * h;
+        FD.style.scrollSnapType = '';
+        feed.seen = idx;
+        feed.moved = true
+      }
+      if (idx != feed.idx || feed.moved) activate(idx);
+      feed.moved = false
+    }
+
+    FD.addEventListener('scroll', () => {
+      const h = FD.clientHeight;
+      if (!h) return;
+      const idx = Math.round(FD.scrollTop / h);
+      if (idx != feed.seen) {
+        // swiped to another slide: stop the old video at once and start buffering the new one,
+        // but only start playing when the swipe has settled (playing mid-swipe causes the lag)
+        feed.seen = idx;
+        feed.moved = true;
+        pauseAll();
+        keep(idx)
+      }
+      clearTimeout(feed.tm);
+      feed.tm = setTimeout(settle, 90)
+    }, {
+      passive: true
+    });
+
+    // tap a video to pause / play
+    FD.addEventListener('click', e => {
+      const el = e.target.closest('.fs'),
+        v = vidOf(el);
+      if (e.target.classList.contains('fs') && innerWidth > 760) return closeAll();
+      if (!v) return;
+      if (v.paused) {
+        play(el)
+      } else {
+        v.pause();
+        el.classList.add('ps')
+      }
+    });
+
+    SND.onclick = () => {
+      sound = !sound;
+      paintSnd();
+      $$('#fd video').forEach(v => v.muted = !sound)
+    };
+
+    const step = d => FD.scrollBy({
+      top: d * FD.clientHeight,
+      behavior: RM ? 'auto' : 'smooth'
+    });
+    $('#fup').onclick = () => step(-1);
+    $('#fdn').onclick = () => step(1);
+
+    function slide(p, i) {
+      const h = (i * 47 + 130) % 360,
+        bg = `background:linear-gradient(150deg,hsl(${h} 55% 30%),hsl(${(h+50)%360} 65% 11%))`;
+      const media = isVid(p[4]) ?
+        `<video loop playsinline preload="metadata" data-src="${p[4]}#t=0.1" aria-label="${p[1]}"></video>` :
+        p[4] ? `<img data-src="${p[4]}" alt="${p[1]}" decoding="async">` : '';
+      return `<section class="fs"><div class="fr" style="${bg}">${media}<span class="pi">${ICON.play}</span></div></section>`
+    }
+
+    function openP(i) {
+      last = document.activeElement;
+      const p = P[i];
+      if (p[0] == 'case') return cs(p);
+      // every item of this tab, in tab order
+      const ids = P.map((x, k) => k).filter(k => P[k][0] == p[0] && P[k][4]),
+        n = ids.length,
+        start = Math.max(0, ids.indexOf(i)),
+        html = ids.map(k => slide(P[k], k));
+      feed.n = n;
+      feed.idx = -1;
+      // clones at both ends make the loop endless: [last] 1 2 … n [first]
+      FD.innerHTML = (n > 1 ? html[n - 1] : '') + html.join('') + (n > 1 ? html[0] : '');
+      FD.querySelectorAll('img,video').forEach(m => m.onerror = () => {
+        if (m.getAttribute('src')) m.remove()
+      });
+      const hv = $('#hv');
+      if (hv) hv.pause(); // free bandwidth for the reel being watched
+      paintSnd();
+      $('#md').classList.add('o');
+      document.body.style.overflow = 'hidden';
+      const first = start + (n > 1 ? 1 : 0);
+      FD.style.scrollSnapType = 'none';
+      FD.scrollTop = first * FD.clientHeight;
+      FD.style.scrollSnapType = '';
+      feed.seen = first;
+      feed.moved = false;
+      activate(first);
+      FD.focus({
+        preventScroll: true
+      })
+    }
+
+    function closeAll() {
+      const was = $('#md').classList.contains('o') || $('#cs').classList.contains('o');
+      clearTimeout(feed.tm);
+      FD.querySelectorAll('video').forEach(v => {
+        v.pause();
+        v.removeAttribute('src');
+        v.load()
+      });
+      FD.innerHTML = '';
+      feed.idx = feed.seen = -1;
+      if (was && !$('#cs').classList.contains('o')) { const hv = $('#hv'); if (hv && hv.getAttribute('src')) hv.play().catch(() => {}) }
+      $('#md').classList.remove('o');
+      $('#cs').classList.remove('o');
+      document.body.style.overflow = '';
+      if (was && last) last.focus();
+      closeMenu()
+    }
+    $('#mx').onclick = $('#cx').onclick = closeAll;
+    addEventListener('keydown', e => {
+      if (e.key == 'Escape') return closeAll();
+      if (!$('#md').classList.contains('o')) return;
+      if (e.key == 'ArrowDown' || e.key == 'PageDown') {
+        e.preventDefault();
+        step(1)
+      } else if (e.key == 'ArrowUp' || e.key == 'PageUp') {
+        e.preventDefault();
+        step(-1)
+      }
+    });
+    // ---------- Case study (unchanged) ----------
+    const cnt = el => {
+      const v = +el.dataset.v,
+        d = +el.dataset.d || 0,
+        s = el.dataset.s || '',
+        t0 = performance.now();
+      (function f(t) {
+        const k = Math.min(1, (t - t0) / 1400),
+          e = 1 - Math.pow(1 - k, 3);
+        el.textContent = (v * e).toLocaleString('en-IN', {
+          minimumFractionDigits: d,
+          maximumFractionDigits: d
+        }) + s;
+        k < 1 && requestAnimationFrame(f)
+      })(t0)
+    };
+    const N = (v, l, d, s) => `<div><b class="n" data-v="${v}" data-d="${d||0}" data-s="${s||''}">0</b><small>${l}</small></div>`;
+
+    function K() {
+      const sw = [
+        ['#073b24', 'Deep green'],
+        ['#f0f51f', 'Bright yellow'],
+        ['#f4f1e6', 'Warm cream'],
+        ['#171510', 'Black / ink'],
+        ['#c49b4f', 'Gold accent']
+      ].map(s => `<div><i style="background:${s[0]}"></i>${s[1]}</div>`).join('');
+      const D = 'krishvi-case/',
+        fg = (f, alt, cap, c) => `<figure class="fg rv ${c||''}"><img src="${D}${f}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${cap}</figcaption></figure>`;
+      const br = [
+        ['Brand foundations', 'Identity, logo direction and colour system.'],
+        ['Brand applications', 'Menu and collateral design to carry the identity into physical touchpoints.'],
+        ['Pre-launch content', 'A people-led “Making of Krishvi” story rather than generic opening-soon posts.'],
+        ['Digital destination', 'A coming-soon website to express the concept and location.'],
+        ['Organic distribution', 'Content distributed across Instagram, Facebook and YouTube, with results reviewed through platform insights.']
+      ].map((b, i) => `<div class="cd rv"><em>0${i+1}</em><h4>${b[0]}</h4><p>${b[1]}</p></div>`).join('');
+      const rl = [
+        ['Making of Krishvi | Part 01', 13.6, 277, 39, 184],
+        ['Making of Krishvi | EP 05', 9.9, 173, 7, 13],
+        ['Making of Krishvi | EP 03', 8.8, 160, 12, 42],
+        ['Making of Krishvi | EP 04', 7.9, 187, 12, 45],
+        ['Manya / behind the scenes', 6.9, 161, 16, 23]
+      ].map(r => `<div class="rw"><div>${r[0]}<div class="bt"><i data-w="${r[1]/13.6*100}%"></i></div></div><span data-l="Views">${r[1]}K</span><span data-l="Likes">${r[2]}</span><span data-l="Comments">${r[3]}</span><span data-l="Shares">${r[4]}</span></div>`).join('');
+      const pl = [
+        ['Instagram', '126,451', 100, 'Sep 1 – Oct 11'],
+        ['Facebook', '3,233', 2.6, 'Sep 1 – Oct 11'],
+        ['YouTube', '6,546', 5.2, 'Sep + Oct 1 – 11']
+      ].map(p => `<div class="cd rv"><em>${p[0]}</em><div><b>${p[1]}</b></div><div class="pb2"><i data-w="${p[2]}%"></i></div><p>${p[3]}</p></div>`).join('');
+      const MSG = 'Hi Boxedge, I read the Krishvi case study and want to build a launch story for my brand.';
+      return `<section class="cv"><div><div class="lg"><img src="${D}krishvi-case-logo.png" alt="Krishvi logo"></div><div class="lb">Boxedge Solutions / Case Study</div><h3 class="sf" style="max-width:12ch;font-size:clamp(36px,5.5vw,72px)">Before the doors opened, we started the conversation.</h3><p class="lead">How we built Krishvi’s brand identity, created a pre-launch content system and earned organic attention before opening day.</p><div class="row"><span class="pill">100% organic campaign</span><a class="pill go" target="_blank" rel="noopener" href="${wa(MSG)}">Chat on WhatsApp ↗</a></div><div><div class="big n" data-v="136230">0</div><div class="lb">Reported views across three platforms</div><p class="lead" style="font-size:13px">01 Sep – 11 Oct 2026 · 41 days · Branding / Content / Coming-soon website</p></div></div><div class="im" role="img" aria-label="Krishvi restaurant interior" style="background:#02241c url(${D}krishvi.jpeg) center/contain no-repeat"></div></section>
+<section class="sec cr"><div class="lb rv">The brief · The assignment</div><h3 class="sf rv">First, we built the brand. Then, we built the attention.</h3><p class="lead rv">When Boxedge came on board, Krishvi was still preparing to open in Jayanagar. That changed the order of work. Before we could build a social media presence, we needed a clear identity for the brand and a consistent way to show up across touchpoints. Then we had to give people a reason to care about a restaurant they could not visit yet.</p><div class="g">${br}</div><div class="lb rv" style="margin-top:56px">The outcome</div><div class="st rv">${N(136230,'Total reported views')}${N(4.8,'Content interactions',1,'K')}${N(7.9,'Instagram profile visits',1,'K')}${N(400,'Follows during period')}</div><p class="note">Campaign reporting period: 1 September to 11 October 2026. All view totals below are taken from the supplied platform screenshots; no restaurant sales or footfall outcomes are claimed.</p></section>
+<section class="sec cw"><div class="lb rv">Phase one · Brand foundations</div><h3 class="sf rv">A brand needs to be recognisable before it can be remembered.</h3><p class="lead rv">We started with the identity. The objective was to give Krishvi a distinctive visual foundation that could work across digital content and the future restaurant experience, rather than treating the logo as a standalone file.</p><div class="fgrid">${fg('logo-final.jpg','Krishvi final logo on deep green','Final logo + colourway','tall')}<div class="fcol">${fg('signage-1.jpg','Krishvi circular signage mock-up on a building facade','Signage application')}${fg('signage-2.jpg','Krishvi logo on a textured wall inside the restaurant','Signage application')}</div></div><div class="lb rv" style="margin-top:44px">The visual system</div><div class="sw rv">${sw}</div><div class="lb rv" style="margin-top:44px">What we established</div><div class="g"><div class="cd rv" style="background:#e1f4ef"><h4>A recognisable mark</h4><p>A custom “K” monogram with a subtle bowl/food cue, framed by a fine oval and paired with the line “Curated. Crafted. Celebrated.”</p></div><div class="cd rv"><h4>A defined palette</h4><p>Deep green, warm neutral tones and high-contrast yellow, cream and monochrome variants create a flexible identity system.</p></div><div class="cd rv"><h4>Designed to travel</h4><p>Logo lock-ups and sign mock-ups show how the identity can hold together across different backgrounds and physical contexts.</p></div></div></section>
+<section class="sec cr"><div class="lb rv">Brand applications · Beyond the logo</div><h3 class="sf rv">We carried the identity into the details people would eventually touch.</h3><p class="lead rv">The identity work extended into menu and collateral design. These applications were important because a restaurant brand is experienced through many small moments, not only through its social profile. The supplied design decks show the logo and visual language explored across food menus, coasters and packaging.</p><div class="tg2">${fg('menu.jpg','Krishvi food menu mock-up','Food menu system')}${fg('coasters.jpg','Krishvi branded coasters','Coasters / tabletop collateral')}${fg('packaging.jpg','Krishvi packaging concept','Packaging concept')}${fg('takeaway.jpg','Krishvi branded takeaway presentation','Branded takeaway presentation')}</div><div class="cd rv" style="background:#01392b;margin-top:30px"><div class="lb">The branding takeaway</div><p style="color:#f4f1e6;font-size:16px">Brand consistency is built through repetition. We created a visual language that could be carried from the logo into menus and physical brand applications, giving future social content a clear identity to build on.</p></div><p class="note">Images are design concepts/mock-ups from the supplied Krishvi identity and collateral decks.</p></section>
+<section class="sec dk"><div class="lb rv">The pre-launch challenge · The problem to solve</div><h3 class="sf rv">How do you build interest in a restaurant that has not opened yet?</h3><p class="lead rv">A pre-launch restaurant has a different content problem from an operating one. There is no regular service to film, no stream of guest experiences to repost, and no lived-in dining room for people to judge for themselves. Krishvi needed the audience to understand the idea and start recognising the people behind it before a first visit was possible.</p><div class="lb rv" style="margin-top:44px">The challenge</div><div class="g"><div class="cd rv"><em>01</em><h4>Nothing was open yet</h4><p>Content could not rely on customers dining in, menu experiences, reviews or live service moments.</p></div><div class="cd rv"><em>02</em><h4>“Coming soon” has a short shelf life</h4><p>Repeated announcement graphics would say the restaurant was coming, but they would not give people enough reason to follow the journey.</p></div><div class="cd rv"><em>03</em><h4>Awareness had to be earned</h4><p>With paid Meta views at zero, the content itself had to do the work of distribution.</p></div></div><div class="lb rv" style="margin-top:56px">Our response</div><h3 class="sf rv">Make the process the story.</h3><p class="lead rv">Instead of pretending Krishvi was already open, we showed the work that happens before opening: the people, decisions, spaces, details and food philosophy shaping the restaurant.</p><p class="lead rv">The “Making of Krishvi” series gave the audience a recurring thread to follow, while people-led and behind-the-scenes Reels made the build-up feel active rather than static.</p><div class="cd rv" style="margin:26px 0 8px"><em>The strategic shift</em><h4 style="font:700 22px/1.3 Georgia,serif;margin-top:10px">We did not try to make Krishvi look open before it was open. We made the journey towards opening worth following.</h4></div><div class="lb rv" style="margin-top:44px">The content system</div><div class="g"><div class="cd rv"><em>01 / Build in public</em><p>The “Making of Krishvi” episodes documented progress and behind-the-scenes choices.</p></div><div class="cd rv"><em>02 / People-led</em><p>On-camera voices helped introduce the thinking and people behind the brand.</p></div><div class="cd rv"><em>03 / Craft &amp; detail</em><p>Cutlery, spaces, visual details and preparation made the process tangible.</p></div><div class="cd rv"><em>04 / Food philosophy</em><p>Chef-led points of view began to introduce what Krishvi wanted its dining experience to stand for.</p></div></div></section>
+<section class="sec cw"><div class="lb rv">Content execution · What people watched</div><h3 class="sf rv">A recurring series gave the pre-launch story a recognisable shape.</h3><p class="lead rv">The strongest visible Reels in the supplied Meta snapshot were not generic opening announcements. They came from the “Making of Krishvi” series and people-led behind-the-scenes moments. The format made the brand feel like something being built in real time, with more to discover in each episode.</p>${fg('meta-top-content.jpg','Meta Business Suite top content by views showing Making of Krishvi reels','Meta Business Suite / Top content by views','wide')}<div class="rv" style="overflow-x:auto;margin-top:30px"><div class="rw h"><span>Reel / content</span><span>Views</span><span>Likes</span><span>Comments</span><span>Shares</span></div>${rl}</div><div class="lb rv" style="margin-top:44px">What the top reels have in common</div><div class="g"><div class="cd rv"><p>They feature <b>people</b>, not just graphics.</p></div><div class="cd rv"><p>They invite viewers into the <b>making process</b>.</p></div><div class="cd rv"><p>They offer a <b>point of view</b>: food, details, choices and the people shaping Krishvi.</p></div><div class="cd rv"><p>The episode format creates <b>continuity</b>, so one Reel can lead naturally to the next.</p></div></div><p class="note">Views and engagements are captured from the Meta top-content screenshot for the selected reporting period. Individual values are rounded as displayed.</p></section>
+<section class="sec cr"><div class="lb rv">Coming-soon website · A second digital touchpoint</div><h3 class="sf rv">Social started the conversation. The website gave the story a home.</h3><p class="lead rv">Krishvi’s coming-soon website extended the pre-launch presence beyond social media. Its message is deliberately about the concept and the occasion, not a false claim that the restaurant is already open. It introduces Krishvi as a pure vegetarian dining experience inspired by India’s many kitchens, cultures and traditions, and anchors the brand in Jayanagar.</p>${fg('website-preview.jpg','Krishvi coming-soon website at krishvi.co.in','Coming-soon website preview / messaging drawn from the live site','wide')}<div class="g"><div class="cd rv" style="background:#e1f4ef"><em>The hero message</em><h4 style="font:700 24px Georgia,serif;margin-top:10px">“A new table is being set in Jayanagar.”</h4><p>Specific location + curiosity, without promising an opening date.</p></div><div class="cd rv" style="background:#01392b"><em style="color:#02FEBB">The brand story</em><h4 style="font:700 24px Georgia,serif;margin-top:10px;color:#fff">“Not just a meal. It’s the moment.”</h4><p style="color:#b7d1cb">The site connects the proposition to real-life occasions: gather, unwind, celebrate or simply spend time together.</p></div></div><div class="qr rv"><img src="${D}qr.png" alt="QR code for krishvi.co.in" width="96" height="96" loading="lazy"><div><p style="font-size:15px;color:#1c1c18">Explore the live coming-soon website: <a href="https://krishvi.co.in" target="_blank" rel="noopener" style="color:#01392b;font-weight:700">krishvi.co.in</a></p><p class="note" style="margin-top:8px">Website role: give interested people a single place to understand the concept and see that Krishvi is coming soon. Website traffic or conversion results were not included in the supplied analytics.</p></div></div></section>
+<section class="sec dk"><div class="lb rv">Performance snapshot · The result</div><h3 class="sf rv">136,230 reported views. Earned organically.</h3><p class="lead rv">Across Instagram, Facebook and YouTube, during the 41-day period from 1 September to 11 October 2026.</p><div class="big n rv" data-v="136230" style="margin-top:30px">0</div><div class="lb rv">Combined reported organic views</div><div class="pf">${pl}</div><div class="lb rv" style="margin-top:50px">Platform evidence</div><div class="ev rv"><figure class="fg"><img src="${D}meta-views.jpg" alt="Meta Insights views chart showing 126,451 Instagram views and 0 from ads" loading="lazy" decoding="async"><figcaption>Meta reporting window: 1 Sep – 11 Oct 2026</figcaption></figure><div class="fcol"><figure class="fg"><img src="${D}youtube-sep.jpg" alt="YouTube September views 3,407" loading="lazy" decoding="async"></figure><figure class="fg"><img src="${D}youtube-oct.jpg" alt="YouTube October views 3,139" loading="lazy" decoding="async"></figure></div></div><p class="note rv">YouTube: 3,407 views in September and 3,139 views from 1-11 October.</p><p class="note rv"><b style="color:#02FEBB;letter-spacing:.06em;text-transform:uppercase;font-size:11px">Total calculation</b>&nbsp; Instagram 126,451 + Facebook 3,233 + YouTube 3,407 + 3,139 = 136,230. YouTube reporting windows are shown separately in the source screenshots.</p><div class="lb rv" style="margin-top:60px">Meta Insights · Beyond views</div><h3 class="sf rv">Attention led to profile exploration and interactions.</h3><p class="lead rv">The supplied Meta Insights screens show more than view volume. During the selected reporting period, the account recorded 4.8K content interactions, 7.9K Instagram profile visits and 400 follows. The view breakdown reports 0 views from ads, supporting the organic-first story.</p>${fg('meta-insights.jpg','Meta Business Suite content interactions, profile visits and follows','Meta Business Suite / Content interactions, profile visits and follows','wide')}<div class="st rv">${N(4.8,'Content interactions · During reporting period',1,'K')}${N(7.9,'Profile visits · Instagram profile',1,'K')}${N(400,'Follows · During reporting period')}${N(0,'Views from ads · Meta views breakdown')}</div><div class="tg2" style="margin-top:34px">${fg('follow-trend.jpg','Instagram follow trend for the selected period','Follow trend / selected period')}${fg('demographics.jpg','Audience demographics, lifetime view','Audience demographics / lifetime view')}</div><p class="note">The audience demographics screenshot uses a lifetime date range, so it is included only as account context and is not added to the campaign-period metrics.</p><p class="note">The available report shows no Instagram link clicks. We therefore describe profile visits and follows as attention signals, not website conversions or restaurant bookings.</p></section>
+<section class="sec cw"><div class="lb rv">What this demonstrates · The takeaway</div><h3 class="sf rv">A launch starts long before opening day.</h3><p class="lead rv">Krishvi’s pre-launch work demonstrates a practical principle: a business does not have to wait until it opens before it can start building recognition. With the right brand foundation and a story worth following, it can introduce its thinking, people and point of view while the final pieces are still coming together.</p><div class="g"><div class="cd rv"><em>01 / Brand before volume</em><p>A consistent identity creates a recognisable thread across visual content, collateral and the digital experience.</p></div><div class="cd rv"><em>02 / Show the process</em><p>Behind-the-scenes content gives people a reason to return while a project is still taking shape.</p></div><div class="cd rv"><em>03 / Organic needs intent</em><p>When paid distribution is not doing the work, creative format, people, story and publishing consistency matter even more.</p></div></div><div class="cd rv" style="background:#e1f4ef;margin-top:30px"><div class="lb">What we can claim with confidence</div><p style="font-size:15px;color:#1c1c18">Between 1 September and 11 October 2026, the supplied platform insights report 136,230 combined views across Instagram, Facebook and YouTube. Meta Insights reports 126,451 Instagram views, 3,233 Facebook views and zero views from ads. The YouTube screenshots show 3,407 views in September and 3,139 views from 1-11 October.</p><p style="font-size:15px;color:#1c1c18;margin-top:12px">These figures demonstrate digital attention and engagement before launch. The screenshots do not establish restaurant footfall, bookings, sales or revenue impact, so those outcomes are not claimed.</p></div></section>
+<section class="sec dk" style="text-align:center"><div class="lb rv">For brands preparing to launch</div><h3 class="sf rv" style="margin-inline:auto;max-width:14ch">Let’s build the story before day one.</h3><p class="lead rv" style="margin:0 auto 28px">Boxedge helps brands establish identity, build content systems and turn the journey behind a launch into a consistent digital presence.</p><a class="pill go" target="_blank" rel="noopener" href="${wa(MSG)}">Chat on WhatsApp ↗</a><p class="note rv" style="margin:34px auto 0;text-align:center;max-width:none">Krishvi website: <a href="https://krishvi.co.in" target="_blank" rel="noopener" style="color:#02FEBB">krishvi.co.in</a> · Branding · Content · Digital strategy<br>Boxedge Solutions · Portfolio: Krishvi pre-launch</p></section>`
+    }
+
+    function DOB() {
+      const D = 'dob-case/',
+        fg = (f, alt, cap, c) => `<figure class="fg rv ${c||''}"><img src="${D}${f}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${cap}</figcaption></figure>`;
+      const MSG = 'Hi Boxedge, I read the Deck of Brews case study and want a campaign built around my next business goal.';
+      const hh = [
+        ['The price hook', 'Beer at ₹155 gives the audience an immediate value cue.', 'dob-price-hook.jpg', 'Deck of Brews Happy Hour ad: Beer at Rs 155'],
+        ['The product moment', 'A real pour makes the offer feel tangible, not just typographic.', 'dob-product-moment.jpg', 'Deck of Brews Happy Hour ad with a beer being poured'],
+        ['The venue + time', 'Rooftop context and the Happy Hour offer make the occasion easy to picture.', 'dob-venue-time.jpg', 'Deck of Brews Happy Hour ad: Laugh Harder, Drink Cheaper']
+      ].map((c, i) => `<div class="cd rv"><img src="${D}${c[2]}" alt="${c[3]}" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px"><em>0${i+1} / ${c[0]}</em><p style="margin-top:6px">${c[1]} T&amp;C apply.</p></div>`).join('');
+      const tt = [
+        ['Occasion first', '“Corporate events?” becomes “team treats.”', 'dob-occasion-first.jpg', 'Corporate Events? Nah, We Call Them Team Treats ad'],
+        ['Package value', 'The package is made concrete, not abstract.', 'dob-package-value.jpg', 'Premium packages starting at 1249 ad'],
+        ['Social proof', 'Real guests make the offer feel lived-in.', 'dob-social-proof.jpg', 'Trust Us, Your Team Deserves This ad'],
+        ['Venue experience', 'The rooftop becomes part of the pitch.', 'dob-venue-experience.jpg', 'Your Team + Our Rooftop = Unbeatable Vibes ad']
+      ].map((c, i) => `<div class="cd rv"><img src="${D}${c[2]}" alt="${c[3]}" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:12px;margin-bottom:14px"><em>0${i+1} / ${c[0]}</em><p style="margin-top:6px">${c[1]}</p></div>`).join('');
+      const rl = [
+        ['Report row 1', 232, '₹3.06'],
+        ['Report row 2', 247, '₹2.89'],
+        ['Report row 3', 568, '₹3.24'],
+        ['Report row 4', 223, '₹4.48'],
+        ['Report row 5', 132, '₹4.92'],
+        ['Report row 6', 146, '₹4.45']
+      ].map(r => `<div class="rw" style="grid-template-columns:minmax(160px,1fr) 110px 150px;min-width:440px"><div>${r[0]}<div class="bt"><i data-w="${r[1]/568*100}%"></i></div></div><span data-l="Callbacks">${r[1]}</span><span data-l="Cost / est. call">${r[2]}</span></div>`).join('');
+      const lead = [
+        ['01', 'Two audiences', 'Nearby customers deciding on a drink, and companies planning a team gathering.'],
+        ['02', 'Two messages', 'A price-led Happy Hour offer, and a team-treat package with a clear starting price.'],
+        ['03', 'Two paths', 'Calls and callback requests for Happy Hour. Company enquiries for corporate packages.']
+      ].map(b => `<div class="cd rv"><em>${b[0]}</em><h4>${b[1]}</h4><p>${b[2]}</p></div>`).join('');
+      return `<section class="cv"><div><div class="lb">Boxedge Solutions / Case Study</div><h3 class="sf" style="max-width:12ch;font-size:clamp(36px,5.5vw,72px)">From Happy Hour calls to corporate leads.</h3><p class="lead">Two direct-response campaigns. Two clear conversion paths. One rooftop brewery. How we built Deck of Brews’ offers around the action the business needed next.</p><div class="row"><span class="pill">Strategy / Creative / Paid media</span><a class="pill go" target="_blank" rel="noopener" href="${wa(MSG)}">Chat on WhatsApp ↗</a></div><div><div class="big n" data-v="1548">0</div><div class="lb">Callback requests* · Happy Hour campaign</div><p class="lead" style="font-size:13px"><b style="color:#f4f1e6">200+</b> corporate leads per month** · Deck of Brews</p></div><p class="lead" style="font-size:12px">*Sum of six visible Meta Ads report rows. **Monthly corporate lead result reported in the brief.</p></div><div class="im" role="img" aria-label="Deck of Brews Beer at Rs 155 Happy Hour ad" style="background:#19151e url(${D}dob-hero.jpg) center/contain no-repeat"></div></section>
+<section class="sec cr"><div class="lb rv">The business challenge · The brief</div><h3 class="sf rv">The brief: turn attention into action.</h3><p class="lead rv">Deck of Brews was struggling with sales. The work needed to create clearer reasons to respond, not just more brand noise. We split the problem into two campaigns, each with its own audience and its own next step.</p><div class="g"><div class="cd rv"><em>Campaign 01 / Happy Hour</em><h4>The challenge</h4><p>A discounted offer needed to create a direct reason for nearby customers to enquire about a reservation.</p><h4 style="margin-top:16px">The action we wanted</h4><p><b>Calls and callback requests tied to a clear Happy Hour message.</b></p></div><div class="cd rv"><em>Campaign 02 / Corporate packages</em><h4>The challenge</h4><p>Package the rooftop experience as an easy-to-understand option for team treats, office gatherings and bulk requirements.</p><h4 style="margin-top:16px">The action we wanted</h4><p><b>Enquiries from companies looking for corporate package deals.</b></p></div></div><div class="cd rv" style="margin:26px 0 8px"><em>The strategic shift</em><h4 style="font:700 22px/1.3 Georgia,serif;margin-top:10px">Two audiences. Two messages. Two different paths to a business conversation.</h4></div><div class="g">${lead}</div></section>
+<section class="sec cw"><div class="lb rv">Campaign one · Happy Hour</div><h3 class="sf rv">Happy Hour: lead with the offer.</h3><p class="lead rv">We built a direct-response message around a concrete value hook, a memorable tone and a clear call-to-enquire.</p><div class="g" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">${hh}</div><p class="note rv">Offer ladder used in the campaign: beer at ₹155; 45% off beer; 25% off selected drinks. T&amp;C apply.</p></section>
+<section class="sec dk"><div class="lb rv">Campaign one · Facebook + Meta Ads</div><h3 class="sf rv">The performance proof, straight from the report.</h3><p class="lead rv">Six visible rows from the original Meta Ads reports, combined.</p><div class="big n rv" data-v="1548" style="margin-top:30px">0</div><div class="lb rv">Callback requests</div><div class="st rv">${'<div><b>₹2.89–₹4.92</b><small>Cost per estimated call conversion across the visible rows</small></div>'}<div><b class="n" data-v="6">0</b><small>Report rows combined</small></div></div><div class="rv" style="overflow-x:auto;margin-top:30px"><div class="rw h" style="grid-template-columns:minmax(160px,1fr) 110px 150px;min-width:440px"><span>Report row</span><span>Callbacks</span><span>Cost / est. call</span></div>${rl}</div><div class="fcol" style="margin-top:34px"><figure class="fg rv"><img src="${D}dob-meta-report-1.jpg" alt="Meta Ads report excerpt showing callback requests and cost per estimated call conversion, rows 1 to 4" loading="lazy" decoding="async"><figcaption>Meta Ads report excerpt / rows 1–4</figcaption></figure><figure class="fg rv"><img src="${D}dob-meta-report-2.jpg" alt="Meta Ads report excerpt showing callback requests and cost per estimated call conversion, rows 5 and 6" loading="lazy" decoding="async"><figcaption>Meta Ads report excerpt / rows 5–6</figcaption></figure></div><p class="note rv">Original Meta Ads reporting excerpts supplied by Boxedge. Six visible rows combined: 232 + 247 + 568 + 223 + 132 + 146 = 1,548. Report dates and campaign names are not visible in these cropped extracts.</p></section>
+<section class="sec cr"><div class="lb rv">Campaign two · Corporate packages</div><h3 class="sf rv">Corporate events? We call them team treats.</h3><p class="lead rv">The second campaign shifted from individual Happy Hour intent to company-level demand for group packages.</p><div class="g" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">${tt}</div><div class="cd hl rv" style="margin-top:30px"><div class="lb">The approach</div><p style="color:#f4f1e6;font-size:16px">Multiple quirky ad angles + a clear corporate package anchor + a direct enquiry path.</p></div><p class="note">The artwork advertised packages from ₹1,249. T&amp;C apply.</p></section>
+<section class="sec cw"><div class="lb rv">Campaign two · Lead evidence</div><h3 class="sf rv">From creative to company-level enquiries.</h3><p class="lead rv">Reported result for companies looking for corporate package deals.</p><div class="st rv"><div><b class="n" data-v="200" data-s="+">0</b><small>Monthly corporate package leads</small></div></div>${fg('dob-lead-sheet.jpg','Corporate leads sheet for Deck of Brews, sourced from Meta Ads, with company name and requirement columns','Corporate leads, Deck of Brews / Meta Ads','wide')}<p class="note">Sample lead-sheet excerpt. The final two digits of the displayed mobile numbers are blurred. Use case: corporate teams and bulk event requirements.</p></section>
+<section class="sec dk"><div class="lb rv">What the combined work delivered</div><h3 class="sf rv">One venue. Two different sources of demand.</h3><p class="lead rv">The campaigns were deliberately built around different buying moments: an immediate Happy Hour decision and a planned corporate gathering.</p><div class="g"><div class="cd rv"><em>Campaign 01</em><div><b style="font:700 44px Georgia,serif;color:#fff" class="n" data-v="1548">0</b></div><h4 style="margin-top:6px">Callback requests</h4><p>Six visible Meta Ads rows. Cost per estimated call conversion ranged from ₹2.89 to ₹4.92.</p><p style="margin-top:12px;color:#f4f1e6"><b>Focus: make the Happy Hour offer easy to understand and easy to act on.</b></p></div><div class="cd rv"><em>Campaign 02</em><div><b style="font:700 44px Georgia,serif;color:#fff" class="n" data-v="200" data-s="+">0</b></div><h4 style="margin-top:6px">Monthly corporate leads</h4><p>Reported monthly result for enquiries from companies interested in corporate package deals.</p><p style="margin-top:12px;color:#f4f1e6"><b>Focus: sell the team experience, the rooftop and the package.</b></p></div></div><div class="cd rv" style="margin:26px 0 8px"><em>The takeaway</em><h4 style="font:700 22px/1.3 Georgia,serif;margin-top:10px">A creative idea becomes more valuable when the next action is designed into the campaign.</h4></div><p class="note rv">Measurement note: callback requests are not confirmed reservations. Corporate lead volume is the reported result shared in the brief.</p></section>
+<section class="sec cr" style="text-align:center"><div class="lb rv">Strategy / Creative / Paid media</div><h3 class="sf rv" style="margin-inline:auto;max-width:14ch">Don’t just promote the offer. Design the next move.</h3><p class="lead rv" style="margin:0 auto 28px">From callback requests to corporate-package enquiries, we built the creative and media approach around what the business needed people to do next.</p><a class="pill go" target="_blank" rel="noopener" href="${wa(MSG)}">Let’s build a campaign around your next goal ↗</a><p class="note rv" style="margin:34px auto 0;text-align:center;max-width:none">Boxedge Solutions · Portfolio: Deck of Brews case study</p></section>`
+    }
+
+    function X(p) {
+      return `<section class="cv"><div><div class="lb">Boxedge Solutions / Case Study</div><h3 class="sf" style="font-size:clamp(36px,5.5vw,72px)">${p[1]}</h3><p class="lead">${p[3]}</p><div><span class="pill">Full case study coming soon</span></div><div><a class="pill" style="background:#02FEBB;color:#000" target="_blank" rel="noopener" href="${wa(`Hi Boxedge, I'd like to know more about the ${p[1]} case study.`)}">Ask on WhatsApp ↗</a></div></div><div class="im"${p[7]?` style="background:url(${p[7]}) center/cover no-repeat"`:''}></div></section>`
+    }
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const t = e.target;
+      t.classList.add('in');
+      t.querySelectorAll('[data-w]').forEach(b => b.style.width = b.dataset.w);
+      (t.matches('.n') ? [t] : [...t.querySelectorAll('.n')]).forEach(cnt);
+      io.unobserve(t)
+    }), {
+      root: $('#cs'),
+      threshold: .15
+    });
+
+    function cs(p) {
+      $('#cb').innerHTML = p[5] == 'k' ? K() : p[5] == 'd' ? DOB() : X(p);
+      $('#cs').classList.toggle('dob', p[5] == 'd');
+      $('#cs').classList.add('o');
+      $('#cs').scrollTop = 0;
+      $('#cs').style.setProperty('--sb', ($('#cs').offsetWidth - $('#cs').clientWidth) + 'px');
+      document.body.style.overflow = 'hidden';
+      $('#cx').focus();
+      $$('#cb .rv,#cb .n,#cb .rw,#cb .st,#cb .pf').forEach(e => io.observe(e))
+    }
+    $('#cs').onscroll = e => {
+      const c = e.target;
+      $('#pg').style.width = c.scrollTop / (c.scrollHeight - c.clientHeight || 1) * 100 + '%'
+    };
+
+    // ---------- Case study highlights ----------
+    /* Built from the 'case' rows in P, so adding or editing a case study row updates the
+       the spotlight section and the popups automatically. */
+    const CASES = P.map((p, i) => ({
+        p,
+        i
+      })).filter(c => c.p[0] == 'case'),
+      grad = i => {
+        const h = (i * 47 + 130) % 360;
+        return `linear-gradient(150deg,hsl(${h} 55% 30%),hsl(${(h+50)%360} 65% 11%))`
+      },
+      fmt = n => Number(n).toLocaleString('en-US');
+
+    // spotlight section
+    (() => {
+      const sec = $('#spotlight'),
+        g = $('#spGrid');
+      if (!CASES.length) {
+        sec.remove();
+        $('#fab').remove();
+        return
+      }
+      const [f, ...rest] = CASES,
+        p = f.p,
+        stat = p[7] ? `<div class="sp-stat"><b data-v="${p[7]}">0</b><small>${p[8]||''}</small></div>` : '';
+      g.classList.toggle('one', !rest.length);
+      g.innerHTML = `<article class="sp-f" tabindex="0" role="button" data-i="${f.i}" aria-label="Open ${p[1]} case study"><div class="bg" style="background-image:${p[6]?`url(${p[6]}),`:''}${grad(f.i)}"></div><span class="sp-tag">Featured case study</span><h3>${p[1]}</h3>${stat}<p>${p[3]}</p><span class="sp-go">Read case study <i>↗</i></span></article>` +
+        (rest.length ? `<div class="sp-list">${rest.slice(0, 3).map(({p,i}) => `<article class="sp-c" tabindex="0" role="button" data-i="${i}" aria-label="Open ${p[1]} case study"><div class="sp-th" style="background:${p[6]?`url(${p[6]}) center/cover no-repeat,`:''}${grad(i)}">${p[6]?'':p[1][0]}</div><div class="sp-tx"><h3>${p[1]}</h3><p>${p[2]}</p><em>${p[5]=='x'?'Coming soon':'Read case study'}</em></div><span class="sp-ar">↗</span></article>`).join('')}</div>` : '');
+      const open = e => {
+        const c = e.target.closest('[data-i]');
+        if (c) openP(+c.dataset.i)
+      };
+      g.onclick = open;
+      g.onkeydown = e => {
+        if (e.key == 'Enter' || e.key == ' ') {
+          e.preventDefault();
+          open(e)
+        }
+      };
+      $('#spAll').onclick = () => {
+        show('case');
+        goWork()
+      };
+      // number counts up when the section scrolls into view
+      const n = g.querySelector('.sp-stat b');
+      if (n) {
+        const v = +n.dataset.v;
+        if (RM) n.textContent = fmt(v);
+        else new IntersectionObserver((es, o) => es.forEach(e => {
+          if (!e.isIntersecting) return;
+          o.disconnect();
+          const t0 = performance.now();
+          (function tick(t) {
+            const k = Math.min(1, (t - t0) / 1600);
+            n.textContent = fmt(Math.round(v * (1 - Math.pow(1 - k, 3))));
+            k < 1 && requestAnimationFrame(tick)
+          })(t0)
+        }), {
+          threshold: .4
+        }).observe(n)
+      }
+    })();
+
+    // floating button: visible after the hero, hidden while the spotlight is on screen
+    (() => {
+      const fab = $('#fab'),
+        sp = $('#spotlight');
+      if (!fab || !sp) return;
+      let seen = false;
+      const upd = () => fab.classList.toggle('on', scrollY > innerHeight * .6 && !seen);
+      new IntersectionObserver(es => {
+        seen = es[0].isIntersecting;
+        upd()
+      }, {
+        threshold: .25
+      }).observe(sp);
+      addEventListener('scroll', upd, {
+        passive: true
+      });
+      upd()
+    })();
+
+    // animated popups: they keep cycling through the case studies. They pause only while a
+    // case study (or any project popup) is open, and resume a moment after it is closed.
+    (() => {
+      if (!CASES.length) return;
+      const el = document.createElement('aside');
+      el.className = 'pop';
+      el.tabIndex = 0;
+      el.setAttribute('role', 'status');
+      el.innerHTML = '<div class="pop-th"></div><div class="pop-tx"><small>Case study</small><h4></h4><p></p><em>View case study →</em></div><button class="pop-x" type="button" aria-label="Dismiss">×</button><i class="pop-bar"></i>';
+      document.body.appendChild(el);
+      const th = el.querySelector('.pop-th'),
+        ti = el.querySelector('h4'),
+        tx = el.querySelector('p'),
+        bar = el.querySelector('.pop-bar'),
+        FIRST = 3500, // delay before the first popup
+        GAP = 9000, // pause between popups
+        RESUME = 2500; // wait after a case study is closed
+      let n = 0,
+        timer;
+      const isOpen = () => $('#md').classList.contains('o') || $('#cs').classList.contains('o'),
+        wait = d => {
+          clearTimeout(timer);
+          timer = setTimeout(show, d)
+        },
+        setOn = on => {
+          el.classList.toggle('on', on);
+          document.body.classList.toggle('pop-on', on)
+        },
+        hide = () => {
+          clearTimeout(timer);
+          setOn(false);
+          wait(GAP)
+        };
+
+      function show() {
+        if (isOpen()) return; // paused: the observer below restarts the cycle
+        const {
+          p,
+          i
+        } = CASES[n++ % CASES.length];
+        el.dataset.i = i;
+        th.style.backgroundImage = (p[6] ? `url(${p[6]}),` : '') + grad(i);
+        th.textContent = p[6] ? '' : p[1][0];
+        ti.textContent = p[1];
+        tx.textContent = p[7] ? `${fmt(p[7])} ${p[8]}` : p[3];
+        setOn(true);
+        if (RM) timer = setTimeout(hide, 8000)
+      }
+      bar.addEventListener('animationend', hide);
+      el.onclick = e => {
+        if (e.target.closest('.pop-x')) return hide(); // the cross only closes this card
+        hide();
+        openP(+el.dataset.i)
+      };
+      el.onkeydown = e => {
+        if (e.key == 'Enter' && e.target == el) el.click()
+      };
+      // pause while a case study / project popup is open, resume after it closes
+      const watch = new MutationObserver(() => {
+        if (isOpen()) {
+          clearTimeout(timer);
+          setOn(false)
+        } else if (!el.classList.contains('on')) wait(RESUME)
+      });
+      [$('#cs'), $('#md')].forEach(x => watch.observe(x, {
+        attributes: true,
+        attributeFilter: ['class']
+      }));
+      wait(FIRST)
+    })();
+
+    // ---------- "Interested in a project like this?" popup: opens once after 2 minutes ----------
+    (() => {
+      const KEY = 'be-lp-shown',
+        DELAY = 2 * 60 * 1000, // 2 minutes on the site
+        lp = $('#lp');
+      try { if (sessionStorage.getItem(KEY)) return } catch (e) {}
+      $('#lpgo').href = wa('Hi Boxedge, I was looking through your portfolio and I am interested in a project like this.');
+      const reelOpen = () => $('#md').classList.contains('o'),
+        close = () => {
+          lp.classList.remove('on');
+          document.body.classList.remove('lp-open')
+        },
+        open = () => {
+          if (reelOpen()) return setTimeout(open, DELAY); // a reel is open: wait another 2 minutes
+          // a case study being open does not stop it: the popup shows on top
+          try { sessionStorage.setItem(KEY, '1') } catch (e) {}
+          document.body.classList.add('lp-open');
+          lp.classList.add('on');
+          $('#lpgo').focus({ preventScroll: true })
+        };
+      $('#lpx').onclick = close;
+      $('#lpgo').addEventListener('click', close);
+      lp.onclick = e => { if (e.target == lp) close() };
+      // Escape closes only this popup (not the case study behind it)
+      addEventListener('keydown', e => {
+        if (e.key == 'Escape' && lp.classList.contains('on')) {
+          e.stopPropagation();
+          close()
+        }
+      }, true);
+      setTimeout(open, DELAY)
+    })();
+  </script>
+</body>
+
+</html>
